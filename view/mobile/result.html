@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="./static/css/weui.css"/>
+    <link rel="stylesheet" href="./static/css/weuix.css"/>
+
+    <script src="./static/js/zepto.min.js"></script>
+    <script src="./static/js/zepto.weui.js"></script>
+    <script src="./public/api.js"></script>
+</head>
+
+<body ontouchstart>
+<div class="page-hd">
+    <h1 class="page-hd-title">
+        订单预览
+    </h1>
+    <p class="page-hd-desc"></p>
+</div>
+
+<div class="page-bd">
+    <div class="weui-form-preview">
+        <div class="weui-form-preview__bd">
+            <div class="weui-form-preview__item windowAppend">
+                <label class="weui-form-preview__label">窗户</label>
+
+            </div>
+        </div>
+        <div class="weui-form-preview__bd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">排水板</label>
+                <span class="weui-form-preview__value">EKS 平瓦组合0001*10</span><em>MK06(780*1180)</em>
+            </div>
+        </div>
+        <div class="weui-form-preview__bd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">窗户配件</label>
+                <span class="weui-form-preview__value">DKL-全遮光窗帘-白色花纹4558-常备*11</span><em>MK06(A系列及V22欧式窗)</em>
+                <span class="weui-form-preview__value">DKL-全遮光窗帘-深蓝1100-常备*8</span><em>MK06(A系列及V22欧式窗)</em>
+            </div>
+        </div>
+        <div class="weui-form-preview__bd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">备注</label>
+                <span class="weui-form-preview__value">坡度15°</span>
+            </div>
+        </div>
+        <div class="weui-form-preview__ft">
+            <a class="weui-form-preview__btn weui-form-preview__btn_primary submit" href="javascript:">确定</a>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__text">Copyright &copy; VELUX</p>
+</div>
+<script>
+    $(function(){
+        var windowArray = JSON.parse(sessionStorage.getItem("windowArray"));
+        $.each(windowArray,function(i,v){
+            $(".windowAppend").append('<span class="weui-form-preview__value">'+v.windowStyle+'*'+v.windowNum+'</span><em>'+v.windowSize+'</em>');
+        })
+    })
+
+    $(".submit").on("click",function () {
+        var windowArray = JSON.parse(sessionStorage.getItem("windowArray"));
+        var customer = {
+            "proxyName":essionStorage.getItem("proxyName"),
+            "name":essionStorage.getItem("name"),
+            "telephone":essionStorage.getItem("telephone"),
+            "address":essionStorage.getItem("address"),
+            "time":essionStorage.getItem("time"),
+            "projectName":essionStorage.getItem("projectName")
+        };
+        var data = {"windowArray":windowArray,"customer":customer}
+        placeOrder(data);
+    })
+</script>
+</body>
+</html>

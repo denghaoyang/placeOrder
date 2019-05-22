@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+	<link rel="stylesheet" href="./static/css/weui.css"/>
+	<link rel="stylesheet" href="./static/css/weuix.css"/>
+	<link rel="stylesheet" href="./static/css/style.css">
+
+	<script src="./public/api.js"></script>
+</head>
+
+<body>
+<div class="main">
+	<div class="left-menu"  id="left">
+		<ul>
+			<li><span>窗户</span></li>
+			<li><span>排水板</span></li>
+			<li><span>配件</span></li>
+		</ul>
+	</div>
+	<div class="con">
+		<div class="right-con con-active window-con" style="display: none;">
+			<ul>
+
+			</ul>
+		</div>
+		<div class="right-con con-active" style="display: none;">
+			<ul>
+
+			</ul>
+		</div>
+	</div>
+	<div class="up1"></div>
+	<div class="shopcart-list fold-transition" style="">
+		<div class="list-header">
+			<h1 class="title">购物车</h1>
+			<span class="empty">清空</span>
+		</div>
+		<div class="list-content">
+			<ul></ul>
+		</div>
+	</div>
+	<div class="footer">  
+		<div class="left">已选：
+		<span id="cartN">
+			<span id="totalcountshow">0</span>份　</span>
+		</div>
+		<div class="right">  
+			<a id="btnselect" class="xhlbtn  disable" href="javascript:void(0)">下一步</a>
+		</div>   
+	</div>
+</div>
+<div class="subFly" style="display: none">
+	<div class="up"></div>
+	<div class="down">
+		<a class="close" href="javascript:">
+			<img src="./static/img/close.png" alt="">
+		</a>
+		<dl class="subName">
+			<dt>
+				<img class="imgPhoto" src="./static/img/pic.png" alt="">
+			</dt>
+			<dd>
+				<p data-icon=""></p>
+				<p>
+					<span>已选：“</span>
+					<span class="choseValue"></span>
+					<span>”</span>
+				</p>
+			</dd>
+		</dl>
+		<dl class="subChose size-chose">
+			<dt>尺寸</dt>
+
+		</dl>
+		<dl class="subChose attr-chose">
+			<dt>属性</dt>
+
+		</dl>
+		<dl class="subCount">
+			<dt>购买数量</dt>
+			<dd>
+				<div class="btn weui-count">
+					<a class="weui-count__btn weui-count__decrease" style="margin-right: 15px"></a>
+					<input class="weui-count__number" type="number" value="1">
+					<a class="weui-count__btn weui-count__increase" style="margin-left: 15px"></a>
+				</div>
+			</dd>
+		</dl>
+		<div class="foot">
+			<span>加入购物车</span>
+		</div>
+	</div>
+
+</div>
+<script type="text/javascript" src="./static/js/jquery.min.js"></script>
+<script src="./static/js/zepto.weui.js"></script>
+<script type="text/javascript" src="./static/js/add.js"></script>
+<script type="text/javascript" src="./static/js/vue.min.js"></script>
+
+</body>
+</html>

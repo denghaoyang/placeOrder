@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/api/vendor/PHPMailer/.phan" />
+      <path value="$PROJECT_DIR$/api/vendor/PHPMailer/.git" />
+      <path value="$PROJECT_DIR$/api/vendor/PHPMailer/examples" />
+      <path value="$PROJECT_DIR$/api/vendor/PHPMailer/language" />
+      <path value="$PROJECT_DIR$/api/vendor/PHPMailer/.github" />
+      <path value="$PROJECT_DIR$/api/vendor/PHPMailer/docs" />
+      <path value="$PROJECT_DIR$/api/vendor/phpexcel/PHPExcel" />
+      <path value="$PROJECT_DIR$/api/vendor/PHPMailer/test" />
+      <path value="$PROJECT_DIR$/api/vendor/PHPMailer/src" />
+    </include_path>
+  </component>
+</project>

@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="./static/css/weui.css"/>
+    <link rel="stylesheet" href="./static/css/weuix.css"/>
+
+    <script src="./static/js/zepto.min.js"></script>
+    <script src="./static/js/zepto.weui.js"></script>
+    <script src="./static/js/picker.city.js"></script>
+    <script src="./static/js/DateUtil.js"></script>
+    <script src="./public/api.js"></script>
+</head>
+
+<body ontouchstart>
+<div>
+<div class="weui-cells weui-cells_form window windowIndex">
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">窗户</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input windowStyle" type="text" value="">
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">尺寸</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input windowSize" type="text" value="">
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">数量</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input windowNum" placeholder="请输入数量" type="number">
+        </div>
+    </div>
+    <input class="windowCode" type="hidden"/>
+</div>
+</div>
+<div class="weui-cell">
+    <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn bg-blue" id="addWindow">
+        <i class="icon icon-34"></i>
+        添加窗户
+    </a>
+    <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn bg-red" id="removeWindow">
+        <i class="icon icon-122"></i>
+        删除窗户
+    </a>
+</div>
+<div class="weui-cells weui-cells_form board">
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">排水板类型</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" id="board" type="text" value="">
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">排水板尺寸</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" type="text">
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">数量</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入数量" type="number">
+        </div>
+    </div>
+</div>
+<div class="weui-cell">
+    <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn bg-blue" id="addBoard">
+        <i class="icon icon-34"></i>
+        添加排水板
+    </a>
+    <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn bg-red" id="removeBoard">
+        <i class="icon icon-122"></i>
+        删除排水板
+    </a>
+</div>
+<div class="weui-cells weui-cells_form attach">
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">窗户配件</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" id="attach" type="text" value="">
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">尺寸</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" type="text">
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label" >数量</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input " placeholder="请输入数量" type="number">
+        </div>
+    </div>
+</div>
+<div class="weui-cell">
+    <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn bg-blue" id="addAttach">
+        <i class="icon icon-34"></i>
+        添加窗户配件
+    </a>
+    <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn bg-red" id="removeAttach">
+        <i class="icon icon-122"></i>
+        删除窗户配件
+    </a>
+</div>
+<div class="weui-cells__title">其他需求</div>
+<div class="weui-form">
+    <div class="weui-form-li">
+        <textarea class="weui-form-area"  name="f6" rows="5" cols="60"></textarea>
+    </div>
+</div>
+<div class="weui-btn-area">
+    <a class="weui-btn weui-btn_primary" href="javascript:" id="btn">确定</a>
+</div>
+<br>
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__text">Copyright &copy; VELUX</p>
+</div>
+<script>
+    var windowIntem = getWindowList();
+
+    $(function(){
+        //初始化内容
+        var windowHtml = $(".window").html();
+        var boardHtml = $(".board").html();
+        var attachHtml = $(".attach").html();
+        var windowIndex = 1;
+        var boardIndex = 1;
+        var attachIndex = 1;
+
+        //提交事件
+        $(document).on("click","#btn",function(){
+            $.confirm("", "您确定要提交吗?", function() {
+                //数据处理
+                var windowArray = [];
+                $('.window').each(function(i,n){
+                    var windowStyle = $(n).find('.windowStyle').val();
+                    var windowSize = $(n).find('.windowSize').val();
+                    var windowNum = $(n).find('.windowNum').val();
+                    var windowCode = $(n).find('.windowCode').val();
+                    windowArray.push({"windowStyle":windowStyle,"windowSize":windowSize,"windowNum":windowNum,"windowCode":windowCode});
+                });
+                sessionStorage.setItem("windowArray",JSON.stringify(windowArray));
+                location.href = "./result.html";
+            }, function() {
+
+            });
+        });
+
+        //事件绑定
+        $(document).on("click","#addWindow",function(){
+            var html = '<div class="weui-cells weui-cells_form window appendWindow'+' windowIndex'+(windowIndex)+'">'+windowHtml+'</div>';
+            $(".windowIndex").parent().append(html);
+            //设置select内容选项
+            $(".windowIndex"+(windowIndex++)+" .windowStyle").select("update",{
+                title: "选择窗户",
+                items: windowIntem,
+                onChange: function (d) {
+                    console.log(windowIndex-1);
+                    $(".windowIndex"+(windowIndex-1)+" .windowSize").select("update",{
+                        title: "选择尺寸",
+                        items: getWindowSize(d.values),
+                        //选择窗户和尺寸后查询code
+                        onChange: function(t){
+                            var code = getWindowCode(d.values,t.valuse);
+                            $(".windowIndex"+(windowIndex-1)+" .windowCode").val(code);
+                        }
+                    });
+                }
+            });
+        });
+        $(document).on("click","#addBoard",function(){
+            boardHtml = '<div class="weui-cells weui-cells_form board appendBoard'+' boardIndex'+(boardIndex++)+'">'+boardHtml+'</div>';
+            $(".board").append(boardHtml);
+        });
+        $(document).on("click","#addAttach",function(){
+            attachHtml = '<div class="weui-cells weui-cells_form attach appendAttach'+' attachIndex'+(attachIndex++)+'">'+attachHtml+'</div>';
+            $(".attach").append(attachHtml);
+        });
+        $(document).on("click","#removeWindow",function(){
+            $(".appendWindow:last").remove();
+        });
+        $(document).on("click","#removeBoard",function(){
+            $(".appendBoard:last").remove();
+        });
+        $(document).on("click","#removeAttach",function(){
+            $(".appendAttach:last").remove();
+        })
+    });
+
+    //初始化数据内容
+    $(".windowStyle").select({
+        title: "选择窗户",
+        items: windowIntem,
+        onChange: function (d) {
+            $(this.$input).parent().parent().parent().find(".windowSize").select("update",{
+                title: "选择尺寸",
+                items: getWindowSize(d.values),
+                //选择窗户和尺寸后查询code
+                onChange:function (t) {
+                    var code = getWindowCode(d.values,t.values);
+                    $(this.$input).parent().parent().parent().find(".windowCode").val(code);
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>

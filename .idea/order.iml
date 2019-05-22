@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/api/application" isTestSource="false" packagePrefix="app\" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/PHPMailer/.github" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/PHPMailer/.phan" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/PHPMailer/docs" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/PHPMailer/examples" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/PHPMailer/language" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/PHPMailer/src" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/PHPMailer/test" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/phpexcel/PHPExcel" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

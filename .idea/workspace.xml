@@ -1,0 +1,850 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f25349b3-2b03-4946-929b-e96b00f1dce7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/order.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/application/.htaccess" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/application/api/controller/Order.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/application/api/model/ProductModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/application/api/model/WindowModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/application/command.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/application/common.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/application/provider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/application/tags.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/build.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/config/app.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/config/cache.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/config/console.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/config/cookie.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/config/database.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/config/log.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/config/middleware.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/config/session.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/config/template.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/config/trace.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/extend/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/public/.htaccess" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/public/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/public/robots.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/public/router.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/public/static/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/route/route.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/runtime/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/think" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/datastructure/Agent.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/datastructure/ApprovalData.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/datastructure/Batch.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/datastructure/CheckinData.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/datastructure/CheckinOption.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/datastructure/Department.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/datastructure/Invoice.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/datastructure/Menu.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/datastructure/Message.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/datastructure/Oauth.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/datastructure/Pay.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/datastructure/ServiceCorp.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/datastructure/ServiceProvider.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/datastructure/Tag.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/datastructure/User.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/examples/AgentTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/examples/ApprovalTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/examples/BatchInviteTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/examples/BatchTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/examples/CheckinTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/examples/DepartmentTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/examples/JsApiTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/examples/MediaTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/examples/MenuTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/examples/MessageTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/examples/OauthTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/examples/PayTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/examples/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/examples/ServiceCorpTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/examples/ServiceProviderTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/examples/TagTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/examples/UserTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/examples/config.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/examples/run.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/src/API.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/src/CorpAPI.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/src/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/src/ServiceCorpAPI.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/api/src/ServiceProviderAPI.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/callback/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/callback/Sample.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/callback/WXBizMsgCrypt.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/callback/callbackverify.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/callback/errorCode.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/callback/pkcs7Encoder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/callback/sha1.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/callback/xmlparse.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/callback_json/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/callback_json/Sample.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/callback_json/WXBizMsgCrypt.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/callback_json/callbackverify.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/callback_json/errorCode.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/callback_json/jsonparse.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/callback_json/pkcs7Encoder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/callback_json/sha1.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/config.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/utils/HttpUtils.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/utils/Utils.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/utils/error.inc.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/utils/http_test.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/wework/utils/test.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/identify.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/old_place.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/place.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/public/api.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/result.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/css/weui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/css/weui.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/css/weuix.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/css/weuix.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/img/add.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/img/close.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/img/down.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/img/minus.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/img/pic.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/img/seller_avatar_256px.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/img/up.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/js/DateUtil.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/js/add.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/js/axios.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/js/clipboard.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/js/echo.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/js/f2.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/js/iscroll-lite.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/js/iscroll-lite.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/js/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/js/lrz.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/js/marked.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/js/mock.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/js/php.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/js/picker.city.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/js/picker.city.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/js/qrcode.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/js/sidebar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/js/sound.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/js/swipe.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/js/vconsole.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/js/vue.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/js/zepto.fullpage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/js/zepto.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/js/zepto.weui.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/mobile/static/js/zepto.weui.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/thinkphp/helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/thinkphp/helper.php" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/api/composer.json</pharConfigPath>
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/mobile/place.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-340">
+              <caret line="7" column="57" lean-forward="true" selection-start-line="7" selection-start-column="57" selection-end-line="7" selection-end-column="57" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#0;n#dd#0;n#dl#3;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#1;n#div#0;n#dd#0;n#dl#3;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/view/mobile/static/js/add.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="195" column="20" lean-forward="true" selection-start-line="195" selection-start-column="20" selection-end-line="195" selection-end-column="20" />
+              <folding>
+                <element signature="n#style#0;n#a#0;n#div#1;n#li#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#1;n#div#1;n#li#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/mobile/static/js/zepto.weui.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-23">
+              <caret line="838" lean-forward="true" selection-start-line="838" selection-end-line="838" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/mobile/public/api.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="8" selection-start-column="8" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="227">
+              <caret line="1301" column="4" selection-start-line="1301" selection-start-column="4" selection-end-line="1301" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/mobile/static/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="358">
+              <caret line="299" column="23" selection-start-line="299" selection-start-column="23" selection-end-line="299" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/mobile/old_place.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="10" selection-start-line="10" selection-end-line="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/application/api/controller/Order.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="275">
+              <caret line="14" column="36" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
+              <folding>
+                <element signature="e#37#68#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/application/api/model/WindowModel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="10" column="57" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/application/api/model/ProductModel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>date</find>
+      <find>mm/dd/yyyy</find>
+      <find>12时</find>
+      <find>/..</find>
+      <find>utils</find>
+      <find>picker-button</find>
+      <find>config.</find>
+      <find>default_return_type</find>
+      <find>vendor</find>
+      <find>flattenSingleValue</find>
+      <find>getBoa</find>
+      <find>img</find>
+      <find>subChose</find>
+      <find>btn</find>
+      <find>ms2</find>
+      <find>windo</find>
+      <find>img/</find>
+      <find>class</find>
+      <find>on</find>
+      <find>totalcountshow</find>
+      <find>left</find>
+      <find>choseValue</find>
+      <find>.foot</find>
+      <find>toa</find>
+      <find>e=</find>
+      <find>e =</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>./static/img/</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>C:\xampp\htdocs\order\view\mobile</dir>
+      <dir>C:\xampp\htdocs\order\api\wework</dir>
+      <dir>C:\xampp\htdocs\order\api\utils</dir>
+      <dir>C:\xampp\htdocs\order\api</dir>
+      <dir>C:\xampp\htdocs\order</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/view/mobile/static/js/zepto.weui.js" />
+        <option value="$PROJECT_DIR$/view/mobile/static/css/weui.css" />
+        <option value="$PROJECT_DIR$/api/api.php" />
+        <option value="$PROJECT_DIR$/api/src/API.class.php" />
+        <option value="$PROJECT_DIR$/api/src/CorpAPI.class.php" />
+        <option value="$PROJECT_DIR$/api/src/test.php" />
+        <option value="$PROJECT_DIR$/api/wework/datastructure/Department.class.php" />
+        <option value="$PROJECT_DIR$/api/wework/datastructure/CheckinOption.class.php" />
+        <option value="$PROJECT_DIR$/api/wework/datastructure/User.class.php" />
+        <option value="$PROJECT_DIR$/api/utils/HttpUtils.class.php" />
+        <option value="$PROJECT_DIR$/api/identify.php" />
+        <option value="$PROJECT_DIR$/api/wework/api.php" />
+        <option value="$PROJECT_DIR$/api/config/app.php" />
+        <option value="$PROJECT_DIR$/api/thinkphp/helper.php" />
+        <option value="$PROJECT_DIR$/api/application/common.php" />
+        <option value="$PROJECT_DIR$/view/mobile/result.html" />
+        <option value="$PROJECT_DIR$/view/mobile/identify.html" />
+        <option value="$PROJECT_DIR$/api/application/api/model/WindowModle.php" />
+        <option value="$PROJECT_DIR$/api/config/database.php" />
+        <option value="$PROJECT_DIR$/api/application/api/model/WindowModel.php" />
+        <option value="$PROJECT_DIR$/api/application/api/model/ProductModel.php" />
+        <option value="$PROJECT_DIR$/api/application/api/controller/Order.php" />
+        <option value="$PROJECT_DIR$/view/mobile/public/api.js" />
+        <option value="$PROJECT_DIR$/view/mobile/static/css/style.css" />
+        <option value="$PROJECT_DIR$/view/mobile/place.html" />
+        <option value="$PROJECT_DIR$/view/mobile/static/js/add.js" />
+      </list>
+    </option>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/api/vendor/PHPMailer/.phan" />
+      <path value="$PROJECT_DIR$/api/vendor/PHPMailer/.git" />
+      <path value="$PROJECT_DIR$/api/vendor/PHPMailer/examples" />
+      <path value="$PROJECT_DIR$/api/vendor/PHPMailer/language" />
+      <path value="$PROJECT_DIR$/api/vendor/PHPMailer/.github" />
+      <path value="$PROJECT_DIR$/api/vendor/PHPMailer/docs" />
+      <path value="$PROJECT_DIR$/api/vendor/phpexcel/PHPExcel" />
+      <path value="$PROJECT_DIR$/api/vendor/PHPMailer/test" />
+      <path value="$PROJECT_DIR$/api/vendor/PHPMailer/src" />
+    </include_path>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="345" />
+    <option name="y" value="105" />
+    <option name="width" value="1750" />
+    <option name="height" value="980" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="order" type="b2602c69:ProjectViewProjectNode" />
+              <item name="order" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="order" type="b2602c69:ProjectViewProjectNode" />
+              <item name="order" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="order" type="b2602c69:ProjectViewProjectNode" />
+              <item name="order" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="order" type="b2602c69:ProjectViewProjectNode" />
+              <item name="order" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="order" type="b2602c69:ProjectViewProjectNode" />
+              <item name="order" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="order" type="b2602c69:ProjectViewProjectNode" />
+              <item name="order" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="order" type="b2602c69:ProjectViewProjectNode" />
+              <item name="order" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="order" type="b2602c69:ProjectViewProjectNode" />
+              <item name="order" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="mobile" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="order" type="b2602c69:ProjectViewProjectNode" />
+              <item name="order" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="mobile" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="order" type="b2602c69:ProjectViewProjectNode" />
+              <item name="order" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="mobile" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="order" type="b2602c69:ProjectViewProjectNode" />
+              <item name="order" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="mobile" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="order" type="b2602c69:ProjectViewProjectNode" />
+              <item name="order" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="mobile" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\order\api\thinkphp" />
+      <recent name="C:\xampp\htdocs\order\api\wework" />
+      <recent name="C:\xampp\htdocs\order\view\mobile\static\js" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f25349b3-2b03-4946-929b-e96b00f1dce7" name="Default Changelist" comment="" />
+      <created>1557966797905</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1557966797905</updated>
+      <workItem from="1557966799093" duration="25075000" />
+      <workItem from="1558057746808" duration="18901000" />
+      <workItem from="1558083592673" duration="556000" />
+      <workItem from="1558312530176" duration="11831000" />
+      <workItem from="1558401509909" duration="11836000" />
+      <workItem from="1558485338933" duration="14392000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="82591000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24161074" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" weight="0.32985073" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23825504" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" weight="0.32985073" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/dd6f4772-efc2-454a-963d-f9a72117d13a/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/mobile/static/js/DateUtil.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-75" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/api.php" />
+    <entry file="file://$PROJECT_DIR$/api/src/API.class.php" />
+    <entry file="file://$PROJECT_DIR$/api/src/README.md" />
+    <entry file="file://$PROJECT_DIR$/api/src/CorpAPI.class.php" />
+    <entry file="file://$PROJECT_DIR$/api/src/test.php" />
+    <entry file="file://$PROJECT_DIR$/api/wework/src/test.php" />
+    <entry file="file://$PROJECT_DIR$/api/wework/datastructure/CheckinData.class.php" />
+    <entry file="file://$PROJECT_DIR$/api/wework/datastructure/Department.class.php" />
+    <entry file="file://$PROJECT_DIR$/api/wework/datastructure/CheckinOption.class.php" />
+    <entry file="file://$PROJECT_DIR$/api/wework/datastructure/User.class.php" />
+    <entry file="file://$PROJECT_DIR$/api/utils/http_test.php" />
+    <entry file="file://$PROJECT_DIR$/api/utils/error.inc.php" />
+    <entry file="file://$PROJECT_DIR$/api/wework/examples/TagTest.php" />
+    <entry file="file://$PROJECT_DIR$/api/utils/HttpUtils.class.php" />
+    <entry file="file://$PROJECT_DIR$/api/wework/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#6#171#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/identify.php" />
+    <entry file="file://$PROJECT_DIR$/api/application/index/controller/Index.php" />
+    <entry file="file://$PROJECT_DIR$/api/wework/api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/config/middleware.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/mobile/static/css/weui.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="680" column="17" selection-start-line="680" selection-start-column="17" selection-end-line="680" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/config/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="31" column="37" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/application/provider.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/vendor/phpexcel/PHPExcel/Writer/Excel5.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7123">
+          <caret line="110" column="20" selection-start-line="110" selection-start-column="20" selection-end-line="110" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/thinkphp/helper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="255" selection-start-line="255" selection-end-line="255" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/vendor/phpexcel/PHPExcel/Worksheet.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="1668" column="24" selection-start-line="1668" selection-start-column="24" selection-end-line="1668" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/vendor/phpexcel/PHPExcel/Calculation/Functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="601" column="41" selection-start-line="601" selection-start-column="23" selection-end-line="601" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/application/common.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+          <folding>
+            <element signature="e#6#80#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/vendor/PHPMailer/docs/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/vendor/PHPMailer/examples/extending.phps">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" selection-start-line="10" selection-end-line="11" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/vendor/PHPMailer/src/PHPMailer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18775">
+          <caret line="768" column="20" selection-start-line="768" selection-start-column="20" selection-end-line="768" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/vendor/phpexcel/PHPExcel/Calculation/Function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3700">
+          <caret line="148" selection-start-line="148" selection-end-line="148" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/vendor/phpexcel/PHPExcel/Style/Borders.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7775">
+          <caret line="311" column="20" selection-start-line="311" selection-start-column="20" selection-end-line="311" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/vendor/phpexcel/PHPExcel/Style.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12700">
+          <caret line="508" column="20" selection-start-line="508" selection-start-column="20" selection-end-line="508" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/vendor/PHPMailer/src/Exception.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="34" column="20" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/vendor/phpexcel/PHPExcel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-448">
+          <caret line="33" column="6" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/mobile/result.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="533">
+          <caret line="53" column="6" lean-forward="true" selection-start-line="22" selection-end-line="53" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/config/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/mobile/identify.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="117" column="9" selection-start-line="117" selection-start-column="9" selection-end-line="117" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/application/api/controller/Order.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="14" column="36" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
+          <folding>
+            <element signature="e#37#68#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/application/api/model/WindowModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" column="57" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/application/api/model/ProductModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="1301" column="4" selection-start-line="1301" selection-start-column="4" selection-end-line="1301" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/mobile/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="299" column="23" selection-start-line="299" selection-start-column="23" selection-end-line="299" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/mobile/old_place.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="10" selection-start-line="10" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/mobile/place.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-340">
+          <caret line="7" column="57" lean-forward="true" selection-start-line="7" selection-start-column="57" selection-end-line="7" selection-end-column="57" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#dd#0;n#dl#3;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#1;n#div#0;n#dd#0;n#dl#3;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/mobile/public/api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="8" selection-start-column="8" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/mobile/static/js/zepto.weui.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-23">
+          <caret line="838" lean-forward="true" selection-start-line="838" selection-end-line="838" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/mobile/static/js/add.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="195" column="20" lean-forward="true" selection-start-line="195" selection-start-column="20" selection-end-line="195" selection-end-column="20" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#1;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#1;n#div#1;n#li#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
