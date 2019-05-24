@@ -75,6 +75,13 @@ $(function () {
         $('.shopcart-list').show();
 
     });
+    $("#btnselect").click(function (){
+        if($(this).hasClass("disable")){
+            return;
+        }else{
+            location.href="./identify.html";
+        }
+    });
     $(".ad").click(function () {
         var n = parseFloat($(this).prev().text())+1;
            if (n == 0) { return; }
