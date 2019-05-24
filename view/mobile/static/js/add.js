@@ -16,6 +16,7 @@ $(function () {
     $(".add").click(function(){
         //清除尺寸与属性信息
         $(".size-chose dd").remove();
+        $(".attr-chose dd").remove();
 
         var parent = $(this).parent();
         var name= parent.parent().children("h4").text()
@@ -25,9 +26,13 @@ $(function () {
 
         //添加尺寸与属性信息
         var windowSizeList = getWindowSize(name);
+        var windowAttrList = getWindowAttr(name);
         $.each(windowSizeList,function (i,val) {
-                $(".size-chose").append("<dd value='"+val.value+"'>"+val.title+"</dd>");
-        })
+            $(".size-chose").append("<dd value='"+val.value+"'>"+val.title+"</dd>");
+        });
+        $.each(windowAttrList,function (i,val) {
+            $(".attr-chose").append("<dd value='"+val.value+"'>"+val.title+"</dd>");
+        });
 
         //动态追加绑定事件
         $(".subChose").on("click","dd",function(){
@@ -48,7 +53,6 @@ $(function () {
         $(".subName dd p:nth-child(1)").html(name);
         $(".subName dd p:nth-child(1)").attr("value",alias);
         $(".imgPhoto").attr('src',src);
-        $(".choseValue").text($(".subChose .m-active").text());
         var dataIcon=$(this).parent().parent().children("h4").attr("data-icon");
         $(".subName dd p:first-child").attr("data-icon",dataIcon)
 
@@ -60,7 +64,11 @@ $(function () {
             //设置选中属性
             $(".choseValue").text(windowItem.size);
             $(".size-chose dd[value='"+windowItem.sizeAlias+"']").addClass("m-active");
+            $(".attr-chose dd[value='"+windowItem.attribute+"']").addClass("m-active");
         }
+
+        //设置已选属性与尺寸
+        $(".choseValue").text($(".size-chose .m-active").text()+$(".attr-chose .m-active").text());
     });
 
     $(".minus").click(function (){
@@ -87,7 +95,8 @@ $(function () {
         var name = $(".subName dd:nth-child(2) p:nth-child(1)").text();//窗户名称
         var nameAlias = $(".subName dd:nth-child(2) p:nth-child(1)").attr("value")//名字简称
         var sizeAias = $(".subChose .m-active").attr("value");//尺寸简称
-        var size = $(".subChose .m-active").html();//尺寸
+        var size = $(".size-chose .m-active").html();//尺寸
+        var attribute = $(".attr-chose .m-active").html();//属性
         //判断是否勾选尺寸与属性
         if(!$(".subChose dd").hasClass("m-active")){
             $.toptip('请选择尺寸','error');
@@ -110,22 +119,20 @@ $(function () {
         var key = 0;
         if(windowArray.some(function (item,index) {
             key=index;
-            return (item.name == name)&&(item.size==size);
+            return (item.name == name)&&(item.size==size)&&(item.attribute==attribute);
         })){
             if (windowArray.length>1){
                 windowArray = windowArray.splice(key,1);
             } else{
                 windowArray = [];
             }
-            windowArray.push({"name":name,"alias":nameAlias,"size":size,"sizeAlias":sizeAias,"num":n});
+            windowArray.push({"name":name,"alias":nameAlias,"size":size,"sizeAlias":sizeAias,"num":n,"attribute":attribute});
             //如果同一名称下的产品调转数组顺序
-            if(windowArray.some(function(i){return i==name})){
-                windowArray.reverse();
-            }
+            windowArray.reverse();
         }else{
-            windowArray.push({"name":name,"alias":nameAlias,"size":size,"sizeAlias":sizeAias,"num":n});
+            windowArray.push({"name":name,"alias":nameAlias,"size":size,"sizeAlias":sizeAias,"num":n,"attribute":attribute});
             $("#totalcountshow").html(nm*1+1);
-
+            windowArray.reverse();
         }
         jss();//  改变按钮样式
     });
@@ -161,7 +168,7 @@ $(function () {
             $(".up1").toggle();
             $(".shopcart-list.fold-transition").toggle();
             $.each(windowArray,function(k,i){
-                $(".list-content>ul").append( '<li class="food"><div><span class="nameAlias" >'+i.alias+'</span><span class="sizeAlias">'+i.sizeAlias+'</span></div>' +
+                $(".list-content>ul").append( '<li class="food"><div><span class="nameAlias" >'+i.alias+'</span><span class="sizeAlias">'+i.sizeAlias+'</span><span class="attrAlias">'+i.attribute+'</span></div>' +
                     '<div class="btn weui-count"><a class="weui-count__btn weui-count__decrease decrease" style="margin-right: 10px"></a> <input class="number weui-count__number" type="number" value="'+i.num+'"> <a class="weui-count__btn weui-count__increase increase" style="margin-left: 10px"></a> </div>');
             });
             //重新绑定事件

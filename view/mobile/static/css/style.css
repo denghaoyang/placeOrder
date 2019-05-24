@@ -282,6 +282,12 @@ button:focus{
     background: #fff;
     position: relative;
 }
+.sizeAlias{
+    margin-left: 40px;
+}
+.attrAlias{
+    margin-left: 40px;
+}
 .close {
     position: absolute;
     top: 10px;

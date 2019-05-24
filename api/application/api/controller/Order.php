@@ -20,9 +20,14 @@ class Order
         return $productModel->getWindowSize($windowName);
     }
 
+    public function getWindowAttr($windowName){
+        $productModel = new ProductModel();
+        return $productModel->getWindowAttr($windowName);
+    }
+
     public function getWindowCode($name,$size){
         $productModel = new ProductModel();
-        return $productModel->getWindowSize($name,$size);
+        return $productModel->getWindowCode($name,$size);
     }
 
     public function placeOrder(){
