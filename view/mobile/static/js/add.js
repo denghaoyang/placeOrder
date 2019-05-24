@@ -3,9 +3,10 @@ $(function () {
     //ul-li 数据初始化
     var windowList = getWindowList();
     $.each(windowList,function (i,val) {
-        var windowHtml = '<li><div class="menu-img"><img src="./static/img/pic.png" width="55" height="55"></div><div class="menu-txt"><h4 data-icon="00" value="'+val.value+'">'+val.title+'</h4>' +
+        var imgPath = (val.src)?val.src:'/img/pic.png';
+        var windowHtml = '<li><div class="menu-img"><img src="./static'+imgPath+'" width="55" height="55"></div><div class="menu-txt"><h4 data-icon="00" value="'+val.value+'">'+val.title+'</h4>' +
             '<div class="btn"><button class="minus"><strong></strong></button><i>0</i><button class="add"><strong></strong></button></div></div></li>';
-        $(".window-con ul").append(windowHtml);
+        $(".window-con"+val.type+" ul").append(windowHtml);
     });
 
     //加的效果
@@ -159,6 +160,7 @@ $(function () {
     $(".left-menu li").click(function(){
         $(this).addClass("active").siblings().removeClass("active");
         var n = $(".left-menu li").index(this);
+        console.log(n);
         $(".left-menu li").index(this);
         $(".con>div").hide();
         $(".con>div:eq("+n+")").show();
