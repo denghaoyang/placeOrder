@@ -1,5 +1,13 @@
-var path = "/order/api/public/";
+var path;
 var result;
+$.ajax({
+    async: false,
+    url: "./public/config.json",
+    type: 'GET',
+    dataType: 'json',
+}).done(function(data) {
+    path = data.url;
+});
 
 function getWindowList(){
     $.ajax({type:"get",url:path+"api/order/getWindowList",async: false,success:function(d){
