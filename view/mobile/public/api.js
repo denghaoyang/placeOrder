@@ -8,22 +8,22 @@ function getWindowList(){
     return result;
 }
 
-function getWindowSize(windowName){
-    $.ajax({type:"get",url:path+"api/order/getWindowSize",data:{"windowName":windowName},async: false,success:function(d){
+function getWindowSize(windowId){
+    $.ajax({type:"get",url:path+"api/order/getWindowSize",data:{"windowId":windowId},async: false,success:function(d){
             result = d;
         }});
     return result;
 }
 
-function getWindowAttr(windowName){
-    $.ajax({type:"get",url:path+"api/order/getWindowAttr",data:{"windowName":windowName},async: false,success:function(d){
+function getWindowAttr(windowId){
+    $.ajax({type:"get",url:path+"api/order/getWindowAttr",data:{"windowId":windowId},async: false,success:function(d){
             result = d;
         }});
     return result;
 }
 
-function getWindowCode(windowName,windowSize){
-    $.ajax({type:"get",url:path+"api/order/getWindowCode",data:{name:windowName,size:windowSize},async: false,success:function(d){
+function getWindowCode(windowId,windowSize){
+    $.ajax({type:"get",url:path+"api/order/getWindowCode",data:{type:windowId,size:windowSize},async: false,success:function(d){
             result = d;
         }});
     return result;

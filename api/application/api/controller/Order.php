@@ -12,22 +12,23 @@ class Order
     public function getWindowList()
     {
         $windowModel = new WindowModel();
-        return $windowModel->getWindowList();
+        $list = $windowModel->getWindowList();
+        return $list;
     }
 
-    public function getWindowSize($windowName){
+    public function getWindowSize($windowId){
         $productModel = new ProductModel();
-        return $productModel->getWindowSize($windowName);
+        return $productModel->getWindowSize($windowId);
     }
 
-    public function getWindowAttr($windowName){
+    public function getWindowAttr($windowId){
         $productModel = new ProductModel();
-        return $productModel->getWindowAttr($windowName);
+        return $productModel->getWindowAttr($windowId);
     }
 
-    public function getWindowCode($name,$size){
+    public function getWindowCode($windowId,$size){
         $productModel = new ProductModel();
-        return $productModel->getWindowCode($name,$size);
+        return $productModel->getWindowCode($windowId,$size);
     }
 
     public function placeOrder(){

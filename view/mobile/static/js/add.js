@@ -4,7 +4,7 @@ $(function () {
     var windowList = getWindowList();
     $.each(windowList,function (i,val) {
         var imgPath = (val.src)?val.src:'/img/pic.png';
-        var windowHtml = '<li><div class="menu-img"><img src="./static'+imgPath+'" width="55" height="55"></div><div class="menu-txt"><h4 data-icon="00" value="'+val.value+'">'+val.title+'</h4>' +
+        var windowHtml = '<li><div class="menu-img"><img src="./static'+imgPath+'" width="55" height="55"></div><div class="menu-txt"><input type="hidden" value="'+val.id+'"/><h4 data-icon="00" value="'+val.value+'">'+val.title+'</h4>' +
             '<div class="btn"><button class="minus"><strong></strong></button><i>0</i><button class="add"><strong></strong></button></div></div></li>';
         $(".window-con"+val.type+" ul").append(windowHtml);
     });
@@ -20,14 +20,15 @@ $(function () {
         $(".attr-chose dd").remove();
 
         var parent = $(this).parent();
-        var name= parent.parent().children("h4").text()
+        var name= parent.parent().children("h4").text();
+        var typeId = parent.parent().children("input[type='hidden']").val();
         var src = $(this).parent().parent().prev().children()[0].src;
         var n = $(this).prev().text();
         var alias = parent.parent().children("h4").attr("value");
 
         //添加尺寸与属性信息
-        var windowSizeList = getWindowSize(name);
-        var windowAttrList = getWindowAttr(name);
+        var windowSizeList = getWindowSize(typeId);
+        var windowAttrList = getWindowAttr(typeId);
         $.each(windowSizeList,function (i,val) {
             $(".size-chose").append("<dd value='"+val.value+"'>"+val.title+"</dd>");
         });
@@ -99,7 +100,7 @@ $(function () {
     //加入购物车事件绑定
     $(".foot").click(function () {
         var n = $('.subCount .weui-count__number').val();
-        console.log(n);
+
         var name = $(".subName dd:nth-child(2) p:nth-child(1)").text();//窗户名称
         var nameAlias = $(".subName dd:nth-child(2) p:nth-child(1)").attr("value")//名字简称
         var sizeAias = $(".subChose .m-active").attr("value");//尺寸简称
@@ -159,11 +160,10 @@ $(function () {
     $(".con>div:eq(0)").show();
     $(".left-menu li").click(function(){
         $(this).addClass("active").siblings().removeClass("active");
-        var n = $(".left-menu li").index(this);
+        var n = $(this).find("span").attr("value");
         console.log(n);
-        $(".left-menu li").index(this);
         $(".con>div").hide();
-        $(".con>div:eq("+n+")").show();
+        $(".window-con"+n).show();
     });
     $(".subFly").hide();
     $(".close").click(function(){

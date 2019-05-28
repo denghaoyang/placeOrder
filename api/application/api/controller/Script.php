@@ -1261,4 +1261,27 @@ class Script
             $productModel->insertGetId(["type_id"=>$window_id,"size_id"=>$size_id,"attribute_id"=>$attr_id,"code"=>$value],true);
         }
     }
+
+    //插入数据
+    public function insertData(){
+        $sizeModel = new SizeModel();
+        $attrModel = new AttrModel();
+        $windowModel = new WindowModel();
+        $productModel = new ProductModel();
+
+        $productType = ["74","77","78"];
+        $sizeType = ["47","48","49","53","54"];
+        $attrType = ["44","45","53"];
+        foreach ($productType as $prodcut){
+            foreach ($sizeType as $size){
+                foreach ($attrType as $attr){
+                    $productName = $windowModel->where("id",$prodcut)->value("alias");
+                    $sizeName = $sizeModel->where("id",$size)->value("alias");
+                    $attrName = $attrModel->where("id",$attr)->value("alias");
+                    $code = $productName." ".$sizeName." ".$attrName;
+                    $productModel->insert(["type_id"=>(int)$prodcut,"size_id"=>(int)$size,"attribute_id"=>(int)$attr,"code"=>$code]);
+                }
+            }
+        }
+    }
 }
