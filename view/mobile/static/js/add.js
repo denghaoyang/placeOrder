@@ -56,6 +56,8 @@ $(function () {
                 $(".board-chose").append("<dd value='" + val.value + "'>" + val.title + "</dd>");
             });
             $(".board-chose").show();
+        }else{
+            $(".board-chose").hide();
         }
 
         //动态追加绑定事件
