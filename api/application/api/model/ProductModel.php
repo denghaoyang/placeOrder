@@ -27,6 +27,16 @@ class ProductModel extends Model
             ->select();
     }
 
+    public function getWindowBoard($windowId){
+        return $this->alias("p")
+            ->join("od_board a","p.board_id=a.id")
+            ->join("od_product_type t","p.type_id=t.id")
+            ->field("a.name as title,a.alias as value")
+            ->group("a.id")
+            ->where("t.id",$windowId)
+            ->select();
+    }
+
     public function getWindowCode($windowId,$size){
         return $this->alias("p")
             ->join("od_size s","p.size_id=s.id")
