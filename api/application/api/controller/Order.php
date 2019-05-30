@@ -26,6 +26,11 @@ class Order
         return $productModel->getWindowAttr($windowId);
     }
 
+    public function getWindowBoard($windowId){
+        $productModel = new ProductModel();
+        return $productModel->getWindowBoard($windowId);
+    }
+
     public function getWindowCode($windowId,$size){
         $productModel = new ProductModel();
         return $productModel->getWindowCode($windowId,$size);
