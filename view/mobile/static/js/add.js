@@ -18,6 +18,7 @@ $(function () {
         //清除尺寸与属性信息
         $(".size-chose dd").remove();
         $(".attr-chose dd").remove();
+        $(".board-chose dd").remove();
 
         var parent = $(this).parent();
         var name= parent.parent().children("h4").text();
@@ -47,6 +48,14 @@ $(function () {
             $.each(windowAttrList,function (i,val) {
                 $(".attr-chose").append("<dd value='"+val.value+"' class='m-active'>"+val.title+"</dd>");
             });
+        }
+        //如果是阳台窗的话增加排水板属性
+        if(typeId==100||typeId==101){
+            var boardList = getWindowBoard(typeId);
+            $.each(boardList, function (i, val) {
+                $(".board-chose").append("<dd value='" + val.value + "'>" + val.title + "</dd>");
+            });
+            $(".board-chose").show();
         }
 
         //动态追加绑定事件

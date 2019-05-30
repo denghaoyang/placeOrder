@@ -30,6 +30,13 @@ function getWindowAttr(windowId){
     return result;
 }
 
+function getWindowBoard(windowId){
+    $.ajax({type:"get",url:path+"api/order/getWindowBoard",data:{"windowId":windowId},async: false,success:function(d){
+            result = d;
+        }});
+    return result;
+}
+
 function getWindowCode(windowId,windowSize){
     $.ajax({type:"get",url:path+"api/order/getWindowCode",data:{type:windowId,size:windowSize},async: false,success:function(d){
             result = d;
