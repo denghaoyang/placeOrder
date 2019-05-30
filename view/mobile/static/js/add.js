@@ -29,12 +29,25 @@ $(function () {
         //添加尺寸与属性信息
         var windowSizeList = getWindowSize(typeId);
         var windowAttrList = getWindowAttr(typeId);
-        $.each(windowSizeList,function (i,val) {
-            $(".size-chose").append("<dd value='"+val.value+"'>"+val.title+"</dd>");
-        });
-        $.each(windowAttrList,function (i,val) {
-            $(".attr-chose").append("<dd value='"+val.value+"'>"+val.title+"</dd>");
-        });
+        if(windowSizeList.length>1){
+            $.each(windowSizeList,function (i,val) {
+                $(".size-chose").append("<dd value='"+val.value+"'>"+val.title+"</dd>");
+            });
+        }else{
+            $.each(windowSizeList,function (i,val) {
+                $(".size-chose").append("<dd value='"+val.value+"' class='m-active'>"+val.title+"</dd>");
+            });
+        }
+        if(windowAttrList.length>1)
+        {
+            $.each(windowAttrList, function (i, val) {
+                $(".attr-chose").append("<dd value='" + val.value + "'>" + val.title + "</dd>");
+            });
+        }else{
+            $.each(windowAttrList,function (i,val) {
+                $(".attr-chose").append("<dd value='"+val.value+"' class='m-active'>"+val.title+"</dd>");
+            });
+        }
 
         //动态追加绑定事件
         $(".subChose").on("click","dd",function(){
