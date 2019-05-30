@@ -50,7 +50,7 @@ $(function () {
             });
         }
         //如果是阳台窗的话增加排水板属性
-        if(typeId==100||typeId==101){
+        if(typeId==100){
             var boardList = getWindowBoard(typeId);
             $.each(boardList, function (i, val) {
                 $(".board-chose").append("<dd value='" + val.value + "'>" + val.title + "</dd>");
@@ -135,6 +135,7 @@ $(function () {
             $.toptip('请选择尺寸','error');
             return;
         }
+
         var nm = $("#totalcountshow").html();//获取数量
         $(".subFly").hide();
         e.text(n);
@@ -159,12 +160,25 @@ $(function () {
             } else{
                 windowArray = [];
             }
-            windowArray.push({"name":name,"alias":nameAlias,"size":size,"sizeAlias":sizeAias,"num":n,"attribute":attribute});
+            //露台窗窗做特殊处理
+            if (nameAlias == "GEL"){
+                windowArray.push({"name":name,"alias":nameAlias,"size":"M08","sizeAlias":"M08","num":n,"attribute":attribute});
+                windowArray.push({"name":size,"alias":sizeAias,"size":"M35","sizeAlias":"M35","num":n,"attribute":attribute});
+            }else{
+                windowArray.push({"name":name,"alias":nameAlias,"size":size,"sizeAlias":sizeAias,"num":n,"attribute":attribute});
+            }
             //如果同一名称下的产品调转数组顺序
             windowArray.reverse();
         }else{
-            windowArray.push({"name":name,"alias":nameAlias,"size":size,"sizeAlias":sizeAias,"num":n,"attribute":attribute});
-            $("#totalcountshow").html(nm*1+1);
+            //露台窗窗做特殊处理
+            if (nameAlias == "GEL"){
+                windowArray.push({"name":name,"alias":nameAlias,"size":"M08","sizeAlias":"M08","num":n,"attribute":attribute});
+                windowArray.push({"name":size,"alias":sizeAias,"size":"M35","sizeAlias":"M35","num":n,"attribute":attribute});
+                $("#totalcountshow").html(nm*1+2);
+            }else{
+                windowArray.push({"name":name,"alias":nameAlias,"size":size,"sizeAlias":sizeAias,"num":n,"attribute":attribute});
+                $("#totalcountshow").html(nm*1+1);
+            }
             windowArray.reverse();
         }
         jss();//  改变按钮样式
