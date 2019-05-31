@@ -7,9 +7,12 @@
     <link rel="stylesheet" href="./static/css/weui.css"/>
     <link rel="stylesheet" href="./static/css/weuix.css"/>
 
+    <script src="./static/js/jquery.min.js"></script>
     <script src="./static/js/zepto.min.js"></script>
     <script src="./static/js/zepto.weui.js"></script>
     <script src="./public/api.js"></script>
+    <script src="./static/js/picker.city.js"></script>
+    <script src="./static/js/DateUtil.js"></script>
 </head>
 
 <body ontouchstart>
@@ -21,30 +24,60 @@
 </div>
 
 <div class="page-bd">
+
     <div class="weui-form-preview">
         <div class="weui-form-preview__bd">
+            <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label" style="width: 70px;margin-right: 15px">服务商名称</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入您的服务商名称" id="proxyName" type="text">
+                </div>
+            </div>
+            <div class="weui-cell" >
+            <div class="weui-cell__hd"><label class="weui-label" for="projectName" style="width: 70px;margin-right: 15px">项目名称</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入您的项目名称" id="projectName" type="text">
+                </div>
+            </div>
+            <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label" for="name" style="width: 70px;margin-right: 15px">收货人姓名</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入您的收货人姓名" id="name" type="text">
+                </div>
+            </div>
+            <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label" for="telephone" style="width: 70px;margin-right: 15px">收货人电话</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入您的收货人电话"  id="telephone" type="number">
+                </div>
+            </div>
+            <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label" for="address"  style="width: 70px;margin-right: 15px">收货地址</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入您的收货地址" id="address" type="text">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="time" class="weui-label" style="width: 70px;margin-right: 15px">提货日期</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="time" type="text" placeholder="请选择提货日期"/>
+                </div>
+            </div>
+        </div>
+        <div class="weui-form-preview__bd">
             <div class="weui-form-preview__item windowAppend">
-                <label class="weui-form-preview__label">窗户</label>
+                <label class="weui-form-preview__label">产品信息</label>
+
 
             </div>
         </div>
         <div class="weui-form-preview__bd">
             <div class="weui-form-preview__item">
-                <label class="weui-form-preview__label">排水板</label>
-                <span class="weui-form-preview__value">EKS 平瓦组合0001*10</span><em>MK06(780*1180)</em>
-            </div>
-        </div>
-        <div class="weui-form-preview__bd">
-            <div class="weui-form-preview__item">
-                <label class="weui-form-preview__label">窗户配件</label>
-                <span class="weui-form-preview__value">DKL-全遮光窗帘-白色花纹4558-常备*11</span><em>MK06(A系列及V22欧式窗)</em>
-                <span class="weui-form-preview__value">DKL-全遮光窗帘-深蓝1100-常备*8</span><em>MK06(A系列及V22欧式窗)</em>
-            </div>
-        </div>
-        <div class="weui-form-preview__bd">
-            <div class="weui-form-preview__item">
                 <label class="weui-form-preview__label">备注</label>
-                <span class="weui-form-preview__value">坡度15°</span>
+                <div class="weui-cell__bd">
+                    <textarea class="weui-textarea" placeholder="Special产品请在此标注" rows="3" onkeyup="textarea(this);"></textarea>
+                    <div class="weui-textarea-counter"><span>0</span>/<i>100</i></div>
+                </div>
             </div>
         </div>
         <div class="weui-form-preview__ft">
@@ -60,25 +93,71 @@
 </div>
 <script>
     $(function(){
+
         var windowArray = JSON.parse(sessionStorage.getItem("windowArray"));
+        console.log(windowArray);
+
         $.each(windowArray,function(i,v){
-            $(".windowAppend").append('<span class="weui-form-preview__value">'+v.windowStyle+'*'+v.windowNum+'</span><em>'+v.windowSize+'</em>');
+            $(".windowAppend").append('<span class="weui-form-preview__value">'+v.alias+'-'+v.sizeAlias+((v.attrAlias)?('-'+v.attrAlias):'')+'*'+v.num+'</span>');
         })
-    })
+    });
 
     $(".submit").on("click",function () {
-        var windowArray = JSON.parse(sessionStorage.getItem("windowArray"));
-        var customer = {
-            "proxyName":essionStorage.getItem("proxyName"),
-            "name":essionStorage.getItem("name"),
-            "telephone":essionStorage.getItem("telephone"),
-            "address":essionStorage.getItem("address"),
-            "time":essionStorage.getItem("time"),
-            "projectName":essionStorage.getItem("projectName")
-        };
-        var data = {"windowArray":windowArray,"customer":customer}
-        placeOrder(data);
-    })
+        var proxyName = $("#proxyName").val();
+        var projectName = $("#projectName").val();
+        var telephone = $("#telephone").val();
+        var time = $("#time").val();
+        var name = $("#name").val();
+        var address = $("#address").val();
+        if(proxyName==""){
+            $.toptip("服务商名称不能为空");
+            return false;
+        }
+        else if (projectName==""){
+            $.toptip("项目名称不能为空");
+            return false;
+        }else if (name==""){
+            $.toptip("收货人姓名不能为空");
+            return false;
+        }else if (telephone==""){
+            $.toptip("收货人电话不能为空");
+            return false;
+        }else if (address==""){
+            $.toptip("收货地址不能为空");
+            return false;
+        }else if (time==""){
+            $.toptip("提货日期不能为空");
+            return false;
+        }
+        else{
+
+        }
+    });
+
+
+    function textarea(input) {
+        var content = $(input);
+        var max =  content.next().find('i') .text();
+        var value = content.val();
+        if (value.length>0) {
+
+            value = value.replace(/\n|\r/gi,"");
+            var len = value.length;
+            content.next().find('span').text(len) ;
+            if(len>max){
+                content.next().addClass('f-red');
+            }else{
+                content.next().removeClass('f-red');
+            }
+        }
+    }
+
+    $("#time").datetimePicker({
+        times: function () {
+            return [
+            ];
+        }
+    });
 </script>
 </body>
 </html>

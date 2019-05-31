@@ -101,13 +101,16 @@ $(function () {
         $('.shopcart-list').show();
 
     });
+    //提交下一步操作绑定
     $("#btnselect").click(function (){
         if($(this).hasClass("disable")){
             return;
         }else{
-            location.href="./identify.html";
+            sessionStorage.setItem("windowArray",JSON.stringify(windowArray));
+            location.href="./result.html";
         }
     });
+
     $(".ad").click(function () {
         var n = parseFloat($(this).prev().text())+1;
            if (n == 0) { return; }
@@ -130,6 +133,8 @@ $(function () {
         var sizeAias = $(".subChose .m-active").attr("value");//尺寸简称
         var size = $(".size-chose .m-active").html();//尺寸
         var attribute = $(".attr-chose .m-active").html();//属性
+        var attrAlias = $(".attr-chose .m-active").attr("value");//属性简称
+        var remark = $(".weui-textarea").text();
         //判断是否勾选尺寸与属性
         if(!$(".subChose dd").hasClass("m-active")){
             $.toptip('请选择尺寸','error');
@@ -162,21 +167,21 @@ $(function () {
             }
             //露台窗窗做特殊处理
             if (nameAlias == "GEL"){
-                windowArray.push({"name":name,"alias":nameAlias,"size":"M08","sizeAlias":"M08","num":n,"attribute":attribute});
-                windowArray.push({"name":size,"alias":sizeAias,"size":"M35","sizeAlias":"M35","num":n,"attribute":attribute});
+                windowArray.push({"name":name,"alias":nameAlias,"size":"M08","sizeAlias":"M08","num":n,"attribute":attribute,"attrAlias":attrAlias,"remark":remark});
+                windowArray.push({"name":size,"alias":sizeAias,"size":"M35","sizeAlias":"M35","num":n,"attribute":attribute,"attrAlias":attrAlias,"remark":remark});
             }else{
-                windowArray.push({"name":name,"alias":nameAlias,"size":size,"sizeAlias":sizeAias,"num":n,"attribute":attribute});
+                windowArray.push({"name":name,"alias":nameAlias,"size":size,"sizeAlias":sizeAias,"num":n,"attribute":attribute,"attrAlias":attrAlias,"remark":remark});
             }
             //如果同一名称下的产品调转数组顺序
             windowArray.reverse();
         }else{
             //露台窗窗做特殊处理
             if (nameAlias == "GEL"){
-                windowArray.push({"name":name,"alias":nameAlias,"size":"M08","sizeAlias":"M08","num":n,"attribute":attribute});
-                windowArray.push({"name":size,"alias":sizeAias,"size":"M35","sizeAlias":"M35","num":n,"attribute":attribute});
+                windowArray.push({"name":name,"alias":nameAlias,"size":"M08","sizeAlias":"M08","num":n,"attribute":attribute,"attrAlias":attrAlias,"remark":remark});
+                windowArray.push({"name":size,"alias":sizeAias,"size":"M35","sizeAlias":"M35","num":n,"attribute":attribute,"attrAlias":attrAlias,"remark":remark});
                 $("#totalcountshow").html(nm*1+2);
             }else{
-                windowArray.push({"name":name,"alias":nameAlias,"size":size,"sizeAlias":sizeAias,"num":n,"attribute":attribute});
+                windowArray.push({"name":name,"alias":nameAlias,"size":size,"sizeAlias":sizeAias,"num":n,"attribute":attribute,"attrAlias":attrAlias,"remark":remark});
                 $("#totalcountshow").html(nm*1+1);
             }
             windowArray.reverse();
@@ -215,7 +220,7 @@ $(function () {
             $(".up1").toggle();
             $(".shopcart-list.fold-transition").toggle();
             $.each(windowArray,function(k,i){
-                $(".list-content>ul").append( '<li class="food"><div><span class="nameAlias" >'+i.alias+'</span><span class="sizeAlias">'+i.sizeAlias+'</span><span class="attrAlias">'+i.attribute+'</span></div>' +
+                $(".list-content>ul").append( '<li class="food"><div><span class="nameAlias" >'+i.alias+'</span><span class="sizeAlias">'+i.sizeAlias+'</span><span class="attrAlias">'+i.attrAlias+'</span></div>' +
                     '<div class="btn weui-count"><a class="weui-count__btn weui-count__decrease decrease" style="margin-right: 10px"></a> <input class="number weui-count__number" type="number" value="'+i.num+'"> <a class="weui-count__btn weui-count__increase increase" style="margin-left: 10px"></a> </div>');
             });
             //重新绑定事件
@@ -300,4 +305,5 @@ $(function () {
         var number = parseInt($input.val() || "0") + 1;
         $input.val(number)
     })
+
 });
