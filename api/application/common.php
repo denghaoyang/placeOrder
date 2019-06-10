@@ -60,3 +60,70 @@ function loadExcel($file,&$msg='',$onlyread=true){
     $objReader->setReadDataOnly($onlyread);
     return $objReader->load($file);
 }
+
+/**
+ * $list 数组转化成森林
+ * $pk key
+ * $pid parentId
+ * */
+function arrayToForest($list, $pk, $pid, $child = 'children') {
+    $tree = array();
+
+    if (!is_array($list)) {
+        return $tree;
+    }
+    $refer = array();
+    $parentNodeIdArr = [];
+    foreach ($list as $key => $data) {
+        $refer[$data[$pk]] = &$list[$key];
+        $parentNodeIdArr[$data[$pid]] = $data[$pid];
+    }
+
+    /* 寻找根结点 */
+    foreach ($list as $key => $data) {
+        if (in_array($data[$pk], $parentNodeIdArr)) {
+            unset($parentNodeIdArr[$data[$pk]]);
+        }
+    }
+    foreach ($list as $key => $data) {
+        $parantId = $data[$pid];
+        if (in_array($parantId, $parentNodeIdArr)) {
+            $tree[] = &$list[$key];
+        } else {
+            if (isset($refer[$parantId])) {
+                $parent = &$refer[$parantId];
+                $parent[$child][] = &$list[$key];
+            }
+        }
+    }
+    return $tree;
+}
+
+/**
+ * $list 更新数组数据
+ * $pk key
+ * $pid parentId
+ * */
+function arrayCast(&$list) {
+    foreach($list as &$value){
+        if (is_array($value)){
+            if(isset($value["data"])){
+                arrayCast($value["data"]);
+            }else{
+                $value['data'] = [];
+            }
+        }
+    }
+    return $list;
+}
+
+function object_array(&$array) {
+    if(is_object($array)) {
+        $array = (array)$array;
+    } if(is_array($array)) {
+        foreach($array as $key=>$value) {
+            $array[$key] = object_array($value);
+        }
+    }
+    return $array;
+}

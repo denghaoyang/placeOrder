@@ -1,0 +1,97 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="echarts/esl.js"></script>
+    <script src="echarts/config.js"></script>
+    <script src="echarts/dist/echarts.simple.js"></script>
+</head>
+<body>
+<style>
+    html, body, #main {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<div id="main" style="width:100%;height:400px;"></div>
+<div id="main1" style="width:100%;height:400px;"></div>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="./public/api.js"></script>
+<script>
+    var userId = sessionStorage.getItem("userId");
+    var userInfo = getUserInfo(userId);
+    var title;
+    var value;
+    console.log(userInfo);
+    //根据用户类别划分分值项
+    if (userInfo.type==0){
+        title = [
+            { text: '品牌推广', max: 10},
+            { text: 'AH推广及应用', max: 10},
+            { text: '办公楼研讨会演讲', max: 10},
+            { text: '客户发展', max: 10},
+            { text: '产品基础知识', max: 10},
+            { text: '方案匹配', max: 10},
+            { text: '报价能力', max: 10},
+            { text: '项目全流程管理', max: 10}
+        ];
+        value = [userInfo.brand_promotion,userInfo.ah_promotion,userInfo.office_lecture,userInfo.customer_develop,
+            userInfo.product_knowledge,userInfo.scheme_match,userInfo.offer_price,userInfo.project_manage];
+    } else if(userInfo.type==1){
+          title =  [{ text: '产品基础知识', max: 10},
+                { text: '方案匹配', max: 10},
+                { text: 'CAD绘图', max: 10},
+                { text: '效果图/草图大师', max: 10},
+                { text: '采光分析', max: 10},
+                { text: 'AH推广及应用', max: 10}
+                ];
+          value = [userInfo.product_knowledge,userInfo.scheme_match,userInfo.cad,userInfo.design_sketch,
+              userInfo.daylight_analysis,userInfo.ah_promotion]
+    }else{
+
+    }
+
+    require([
+        viewPath+'/view/customer/echarts/dist/echarts'
+        // 'echarts/chart/radar',
+        // 'echarts/component/legend',
+        // 'echarts/component/tooltip'
+    ], function (echarts) {
+
+        var chart = echarts.init(document.getElementById('main'));
+
+        chart.setOption({
+            aria: {
+                show: true
+            },
+            tooltip: {},
+            radar: {
+                radius: [50, '70%'],
+                name: {
+                    formatter:'【{value}】',
+                    color:'#72ACD1'
+                },
+                triggerEvent: true,
+                // shape: 'circle',
+                indicator: title
+            },
+            series: [{
+                type: 'radar',
+                label: {
+                    normal: {
+                        show: true
+                    }
+                },
+                // areaStyle: {normal: {}},
+                data : [
+                    {
+                        value : value,
+                        name : '技能雷达图'
+                    }
+                ]
+            }]
+        });
+    });
+
+</script>
+</body>
+</html>

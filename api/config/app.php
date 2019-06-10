@@ -143,4 +143,15 @@ return [
     // 异常处理handle类 留空使用 \think\exception\Handle
     'exception_handle'       => '',
 
+    /*/******************************************企业微信配置******************************************/
+    // 企业的id，在管理端->"我的企业" 可以看到
+    "CORP_ID"               => "wxe7cad3b423148bbe",
+
+    // "通讯录同步"应用的secret, 开启api接口同步后，可以在管理端->"通讯录同步"看到
+    "CONTACT_SYNC_SECRET"   => "YSdvJ7eNsVAZNPMBTa7-P7gMtllzW0h85kQ8kIot92k",
+
+    // 某个自建应用的id及secret, 在管理端 -> 企业应用 -> 自建应用, 点进相应应用可以看到
+    "APP_ID"                => 1000007,
+    "APP_SECRET"            => "7y90vI9z8H-OF9qSh55LHS8-pZ3ZqQVoiUwGUmWBUWI"
+
 ];

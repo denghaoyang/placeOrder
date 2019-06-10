@@ -1,0 +1,291 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width =device-width, initial-scale=1, maximum-scale=1" />
+		<title></title>
+		<meta charset="utf-8" />
+		<!--layui的css-->
+		<link href="./layui/src/css/layui.css" rel="stylesheet" />
+		<style type="text/css">
+			form {
+				width: 500px;
+				margin: 10px auto;
+			}
+			
+			h1,
+			h2,
+			h3 {
+				padding: 10px 0;
+			}
+			
+			a {
+				text-align: right;
+				font-size: 18px;
+				color: #1C86EE;
+			}
+			
+			.xtree_contianer {
+				width: 500px;
+				border: 1px solid #9C9C9C;
+				overflow: auto;
+				margin-bottom: 30px;
+				background-color: #fff;
+				padding: 10px 0 25px 5px;
+			}
+			
+			.div-btns {
+				margin: 20px 0;
+			}
+			
+			.layui-form-label {
+				width: 60px !important;
+			}
+		</style>
+	</head>
+
+	<body>
+	<div class="layui-tab" lay-filter="test">
+		<ul class="layui-tab-title">
+			<li class="layui-this" lay-id="11">用户管理</li>
+			<li lay-id="22">活动管理</li>
+		</ul>
+		<div class="layui-tab-content">
+			<div class="layui-tab-item layui-show">
+				<div class="layui-row">
+					<div class="layui-col-md3">
+						<ul id="department"></ul>
+					</div>
+					<div class="layui-col-md6">
+						<div id="test" lay-filter="test"></div>
+					</div>
+				</div>
+			</div>
+			<div class="layui-tab-item">
+				<div class="layui-col-md6 layui-col-md-offset3">
+					<button type="button" class="layui-btn layui-btn-radius addTrain">添加培训</button>
+					<div id="train" lay-filter="train"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	</body>
+	<script type="text/html" id="barDemo">
+		<a class="layui-btn layui-btn-xs" lay-event="showGraph">查看能力值</a>
+		<a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="showTrain">查看培训记录</a>
+		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="edit">编辑</a>
+	</script>
+	<script type="text/html" id="barTrain">
+		<a class="layui-btn layui-btn-xs" lay-event="edit">查看</a>
+	</script>
+</html>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<!--先引用layui的js-->
+<script src="./layui/src/layui.js"></script>
+<script src="./layui/src/lay/modules/jquery.js"></script>
+<!--引用xtree-->
+<script src="./public/api.js"></script>
+
+<script type="text/javascript">
+	//注意：选项卡 依赖 element 模块，否则无法进行功能性操作
+	layui.use('element', function(){
+		var element = layui.element;
+
+		var layid = location.hash.replace(/^#test=/, '');
+		element.tabChange('test', layid);
+
+		element.on('tab(test)', function(){
+			location.hash = 'test='+ this.getAttribute('lay-id');
+		});
+	});
+
+	//左侧部门层级结构
+	layui.use('tree', function(){
+		var departmentList = getDepartmentList();
+		var tree = layui.tree({
+			elem: '#department' //指定元素
+			,skin: 'as' //设定皮肤
+			//,target: '_blank' //是否新选项卡打开（比如节点返回href才有效）
+			,drag: true
+			,click: function(item){ //点击节点回调
+				layui.use('table', function() {
+					var table = layui.table;
+					var departmentId = item.id;
+					//return;
+					var userList = getUserList(departmentId);
+					//渲染
+					window.ins1 = table.render({
+						elem: '#test'
+						, height: 400
+						//,size: 'lg'
+						,data:userList
+						, page: true
+						//,loading: false
+						, limit: 30
+						//,defaultToolbar: ['filter']
+						, cols: [[
+							{field: 'userid', title: 'ID', width: 80, fixed: 'left', totalRowText: '合计：'}
+							, {field: 'name', title: '姓名',  width: 120}
+							, {field: 'type', title: '职能部门', width: 150}
+							, {field: 'mobile', title: '联系方式', width: 200}
+							, {field: 'ability', title: '综合能力',  width: 120}
+							, {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 300}
+						]]
+					});
+
+					//监听行工具事件
+					table.on('tool(test)', function(obj){
+						var data = obj.data;
+						var tr = obj.tr; //获得当前行 tr 的DOM对象
+						sessionStorage.setItem("userId",data.userid);
+						if(obj.event === 'showGraph'){
+							layer.open({
+								type: 2
+								,content: viewPath+'/view/customer/graph.html'
+								,area: ['800px', '500px']
+								,maxmin: true
+							});
+						} else if(obj.event === 'edit'){
+							var index = layer.open({
+								type: 2
+								,content: viewPath+'/view/customer/edit.html'
+								,area: ['800px', '800px']
+								,maxmin: true
+							});
+							console.log(index);
+						} else if(obj.event === 'showTrain'){
+							layer.open({
+								type: 2
+								,content: viewPath+'/view/customer/train.html'
+								,area: ['800px', '800px']
+								,maxmin: true
+							});
+						}
+					});
+				})
+			}
+			,nodes:departmentList
+		});
+	});
+	//人员信息
+	layui.use('table', function() {
+		var table = layui.table;
+		//return;
+		var userList = getUserList(52);
+		//渲染
+		window.ins1 = table.render({
+			elem: '#test'
+			, height: 500
+			//,size: 'lg'
+			,data:userList
+			, page: true
+			//,loading: false
+			, limit: 30
+			//,defaultToolbar: ['filter']
+			, cols: [[
+				{field: 'userid', title: 'ID', width: 80, fixed: 'left', totalRowText: '合计：'}
+				, {field: 'name', title: '姓名',  width: 120}
+				, {field: 'type', title: '职能部门', width: 150}
+				, {field: 'mobile', title: '联系方式', width: 200}
+				, {field: 'ability', title: '综合能力',  width: 120}
+				, {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 300}
+			]]
+		});
+
+		//监听行工具事件
+		table.on('tool(test)', function(obj){
+			var data = obj.data;
+			var tr = obj.tr; //获得当前行 tr 的DOM对象
+			sessionStorage.setItem("userId",data.userid);
+			if(obj.event === 'showGraph'){
+				layer.open({
+					type: 2
+					,content: viewPath+'/view/customer/graph.html'
+					,area: ['800px', '500px']
+					,maxmin: true
+				});
+			} else if(obj.event === 'edit'){
+				var index = layer.open({
+					type: 2
+					,content: viewPath+'/view/customer/edit.html'
+					,area: ['800px', '800px']
+					,maxmin: true
+				});
+				sessionStorage.setItem("layerIndex",index);
+			} else if(obj.event === 'showTrain'){
+				layer.open({
+					type: 2
+					,content: viewPath+'/view/customer/train.html'
+					,area: ['800px', '800px']
+					,maxmin: true
+				});
+			}
+		});
+	});
+	//培训信息
+	layui.use('table', function() {
+		var table = layui.table;
+		//return;
+		var trainList = getTrainList();
+		//渲染
+		window.ins1 = table.render({
+			elem: '#train'
+			, height: 500
+			//,size: 'lg'
+			,data:trainList
+			, page: true
+			//,loading: false
+			, limit: 30
+			//,defaultToolbar: ['filter']
+			, cols: [[
+				{field: 'name', title: '名称', width: 200, fixed: 'left'}
+				, {field: 'lecturer', title: '主讲人',  width: 120}
+				, {field: 'time', title: '培训时间',  width: 120}
+				, {field: 'location', title: '培训地址', width: 150}
+				, {fixed: 'right', title: '操作', toolbar: '#barTrain', width: 200}
+			]]
+		});
+
+		//监听行工具事件
+		table.on('tool(train)', function(obj){
+			var data = obj.data;
+			var tr = obj.tr; //获得当前行 tr 的DOM对象
+			console.log(obj);
+			if(obj.event === 'edit'){
+				localStorage.setItem("trainId",data.id);
+				layer.open({
+					type: 2
+					,content: viewPath+'/view/customer/trainEdit.html'
+					,area: ['800px', '800px']
+					,maxmin: true
+				});
+			}
+		});
+	})
+
+	var $ = layui.jquery, active = {
+		parseTable: function(){
+			table.init('parse-table-demo', {
+				limit: 3
+			});
+		}
+		,add: function(){
+			table.addRow('test')
+		}
+	};
+	$('i').on('click', function(){
+		var type = $(this).data('type');
+		active[type] ? active[type].call(this) : '';
+	});
+	$('.addTrain').on('click', function(){
+		layer.open({
+			type: 2
+			,content: viewPath+'/view/customer/trainAdd.html'
+			,area: ['800px', '800px']
+			,maxmin: true
+		});
+	});
+</script>
