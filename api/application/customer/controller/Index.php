@@ -80,7 +80,11 @@ class Index extends Controller{
         $userModel = new UserModel();
 
         try {
-            return $userModel->where("user_id",$userId)->find();
+            return $userModel->alias("u")
+                ->join("cu_department d","u.department_id=d.id")
+                ->where("u.user_id",$userId)
+                ->field("u.*,d.name as department_name")
+                ->find();
         } catch (Exception $e) {
             echo $e->getMessage() . "\n";
         }
