@@ -3,6 +3,7 @@
     <meta charset="utf-8">
     <script src="echarts/esl.js"></script>
     <script src="echarts/config.js"></script>
+    <link href="./layui/src/css/layui.css" rel="stylesheet" />
     <script src="echarts/dist/echarts.simple.js"></script>
 </head>
 <body>
@@ -12,8 +13,20 @@
         height: 100%;
     }
 </style>
-<div id="main" style="width:100%;height:400px;"></div>
-<div id="main1" style="width:100%;height:400px;"></div>
+<div class="layui-col-md2">
+    <div></div>
+</div>
+<div class="layui-col-md1">
+<div class="layui-card">
+    <div class="layui-card-header name"></div>
+    <div class="layui-card-body work">
+
+    </div>
+</div>
+</div>
+<div class="layui-col-md9">
+<div id="main" style="height:550px;width: 100%"></div>
+</div>
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script src="./public/api.js"></script>
 <script>
@@ -22,6 +35,10 @@
     var title;
     var value;
     console.log(userInfo);
+    var typeList = ["销售&拓展","设计","技术&安装"];
+    //姓名 公司 职位设置
+    $(".name").html(userInfo.name)
+    $(".work").html(userInfo.department_name+"<br>"+typeList[userInfo.type])
     //根据用户类别划分分值项
     if (userInfo.type==0){
         title = [
