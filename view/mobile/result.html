@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <title></title>
@@ -28,37 +28,55 @@
     <div class="weui-form-preview">
         <div class="weui-form-preview__bd">
             <div class="weui-cell">
-            <div class="weui-cell__hd"><label class="weui-label" style="width: 70px;margin-right: 15px">服务商名称</label></div>
+            <div class="weui-cell__hd"><label class="weui-label" style="width: 90px;margin-right: 15px">服务商名称</label></div>
                 <div class="weui-cell__bd">
                     <input class="weui-input" placeholder="请输入您的服务商名称" id="proxyName" type="text">
                 </div>
             </div>
             <div class="weui-cell" >
-            <div class="weui-cell__hd"><label class="weui-label" for="projectName" style="width: 70px;margin-right: 15px">项目名称</label></div>
+            <div class="weui-cell__hd"><label class="weui-label" for="projectName" style="width: 90px;margin-right: 15px">项目名称</label></div>
                 <div class="weui-cell__bd">
                     <input class="weui-input" placeholder="请输入您的项目名称" id="projectName" type="text">
                 </div>
             </div>
             <div class="weui-cell">
-            <div class="weui-cell__hd"><label class="weui-label" for="name" style="width: 70px;margin-right: 15px">收货人姓名</label></div>
+            <div class="weui-cell__hd"><label class="weui-label" for="name" style="width: 90px;margin-right: 15px">收货人姓名</label></div>
                 <div class="weui-cell__bd">
                     <input class="weui-input" placeholder="请输入您的收货人姓名" id="name" type="text">
                 </div>
             </div>
             <div class="weui-cell">
-            <div class="weui-cell__hd"><label class="weui-label" for="telephone" style="width: 70px;margin-right: 15px">收货人电话</label></div>
+            <div class="weui-cell__hd"><label class="weui-label" for="telephone" style="width: 90px;margin-right: 15px">收货人电话</label></div>
                 <div class="weui-cell__bd">
                     <input class="weui-input" placeholder="请输入您的收货人电话"  id="telephone" type="number">
                 </div>
             </div>
             <div class="weui-cell">
-            <div class="weui-cell__hd"><label class="weui-label" for="address"  style="width: 70px;margin-right: 15px">收货地址</label></div>
+            <div class="weui-cell__hd"><label class="weui-label" for="address"  style="width: 90px;margin-right: 15px">收货地址</label></div>
                 <div class="weui-cell__bd">
                     <input class="weui-input" placeholder="请输入您的收货地址" id="address" type="text">
                 </div>
             </div>
             <div class="weui-cell">
-                <div class="weui-cell__hd"><label for="time" class="weui-label" style="width: 70px;margin-right: 15px">提货日期</label></div>
+                <div class="weui-cell__hd"><label class="weui-label" for="userName" style="width: 90px;margin-right: 15px">终端用户姓名</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入终端用户姓名"  id="userName" type="number">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label" for="userTel" style="width: 90px;margin-right: 15px">终端用户电话</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入终端用户电话"  id="userTel" type="number">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label" for="userCommunity" style="width: 90px;margin-right: 15px">终端用户小区</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入终端用户小区名"  id="userCommunity" type="number">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="time" class="weui-label" style="width: 90px;margin-right: 15px">提货日期</label></div>
                 <div class="weui-cell__bd">
                     <input class="weui-input" id="time" type="text" placeholder="请选择提货日期"/>
                 </div>
@@ -66,8 +84,13 @@
         </div>
         <div class="weui-form-preview__bd">
             <div class="weui-form-preview__item windowAppend">
-                <label class="weui-form-preview__label">产品信息</label>
-
+                <label class="weui-form-preview__label">产品信息</label><br>
+                <span class="weui-form-preview__value" style="float: left">
+                    DML室内全遮光帘(SK06 1074)
+                </span>
+                <em>
+                    *24
+                </em>
 
             </div>
         </div>
@@ -93,13 +116,22 @@
 </div>
 <script>
     $(function(){
+        //解析get参数
+        var code = getQueryString("code");
+        $("#proxyName").val(code);
 
         var windowArray = JSON.parse(sessionStorage.getItem("windowArray"));
         console.log(windowArray);
 
         $.each(windowArray,function(i,v){
-            $(".windowAppend").append('<span class="weui-form-preview__value">'+v.alias+'-'+v.sizeAlias+((v.attrAlias)?('-'+v.attrAlias):'')+'*'+v.num+'</span>');
-        })
+            $(".windowAppend").append('<span class="weui-form-preview__value" style="float: left">'+v.name+'( '+v.sizeAlias+((v.attrAlias)?(' '+v.attrAlias):')')+')</span>'+'<em class="weui-form-preview__value">*'+v.num+'</em>');
+        });
+
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
     });
 
     $(".submit").on("click",function () {
