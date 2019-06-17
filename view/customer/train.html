@@ -44,31 +44,44 @@
     </style>
 </head>
 <body>
-<div class="layui-tab" lay-filter="test">
-    <div class="layui-row">
-        <div class="layui-col-md3">
-            <ul id="department"></ul>
-        </div>
-        <div class="layui-col-md6">
-            <table class="layui-table">
-                <colgroup>
-                    <col width="150">
-                    <col width="250">
-                    <col width="150">
-                    <col width="150">
-                </colgroup>
-                <thead>
-                <tr>
-                    <th>培训科目</th>
-                    <th>培训讲师</th>
-                    <th>培训时间</th>
-                    <th>培训地点</th>
-                </tr>
-                </thead>
-                <tbody class="append">
+<div class="layui-col-md2">
+    <div></div>
+</div>
+<div class="layui-col-md1">
+    <div class="layui-card">
+        <div class="layui-card-header name"></div>
+        <div class="layui-card-body work">
 
-                </tbody>
-            </table>
+        </div>
+    </div>
+</div>
+<div class="layui-col-md9">
+    <div class="layui-tab" lay-filter="test">
+        <div class="layui-row">
+            <div class="layui-col-md3">
+                <ul id="department"></ul>
+            </div>
+            <div class="layui-col-md6">
+                <table class="layui-table">
+                    <colgroup>
+                        <col width="150">
+                        <col width="250">
+                        <col width="150">
+                        <col width="150">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th>培训科目</th>
+                        <th>培训讲师</th>
+                        <th>培训时间</th>
+                        <th>培训地点</th>
+                    </tr>
+                    </thead>
+                    <tbody class="append">
+
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
@@ -81,6 +94,11 @@
 <script type="text/javascript">
     var userId = sessionStorage.getItem("userId");
     var trainList = getTrainListByUserId(userId);
+    var userInfo = getUserInfo(userId);
+    var typeList = ["销售&拓展","设计","技术&安装"];
+    //姓名 公司 职位设置
+    $(".name").html(userInfo.name);
+    $(".work").html(userInfo.department_name+"<br>"+typeList[userInfo.type]);
 
     $.each(trainList,function(i,val){
         $(".append").append("<tr><td>"+val.name+"</td><td>"+val.lecturer+"</td><td>"+val.time+"</td><td>"+val.location+"</td></tr>")

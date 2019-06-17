@@ -37,8 +37,8 @@
     console.log(userInfo);
     var typeList = ["销售&拓展","设计","技术&安装"];
     //姓名 公司 职位设置
-    $(".name").html(userInfo.name)
-    $(".work").html(userInfo.department_name+"<br>"+typeList[userInfo.type])
+    $(".name").html(userInfo.name);
+    $(".work").html(userInfo.department_name+"<br>"+typeList[userInfo.type]);
     //根据用户类别划分分值项
     if (userInfo.type==0){
         title = [
