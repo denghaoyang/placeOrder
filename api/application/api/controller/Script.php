@@ -2,6 +2,7 @@
 namespace app\api\controller;
 
 use app\api\model\AttrModel;
+use app\api\model\BoardModel;
 use app\api\model\ProductModel;
 use app\api\model\SizeModel;
 use app\api\model\WindowModel;
@@ -1268,20 +1269,27 @@ class Script
         $attrModel = new AttrModel();
         $windowModel = new WindowModel();
         $productModel = new ProductModel();
+//        $boardModel = new BoardModel();
 
-        $productType = ["74","77","78"];
-        $sizeType = ["47","48","49","53","54"];
-        $attrType = ["44","45","53"];
+        $productType = ["178","139","140","179"];
+        $sizeType = ["81"];
+//        $attrType = ["91","92"];
+//        $boardType = ["1","2","3"];
         foreach ($productType as $prodcut){
             foreach ($sizeType as $size){
-                foreach ($attrType as $attr){
-                    $productName = $windowModel->where("id",$prodcut)->value("alias");
-                    $sizeName = $sizeModel->where("id",$size)->value("alias");
-                    $attrName = $attrModel->where("id",$attr)->value("alias");
-                    $code = $productName." ".$sizeName." ".$attrName;
-                    $productModel->insert(["type_id"=>(int)$prodcut,"size_id"=>(int)$size,"attribute_id"=>(int)$attr,"code"=>$code]);
-                }
+//                foreach ($attrType as $attr){
+                        $productName = $windowModel->where("id",$prodcut)->value("alias");
+                        $sizeName = $sizeModel->where("id",$size)->value("alias");
+//                        $attrName = $attrModel->where("id",$attr)->value("alias");
+//                        $boardName = $boardModel->where("id",$board)->value("alias");
+                        $code = $productName." ".$sizeName;
+                        $productModel->insert(["type_id"=>(int)$prodcut,"size_id"=>(int)$size,"code"=>$code]);
+//                }
             }
         }
+    }
+
+    public function test(){
+        dump(input("get."));
     }
 }
