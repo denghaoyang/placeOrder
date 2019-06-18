@@ -56,16 +56,16 @@ class Index extends Controller{
 
         try {
             $UserInfoByCode = $api->GetUserInfoByCode($code);
-
-            $UserInfo =  $api->UserGet($UserInfoByCode->UserId);
-
-            if ($UserInfo->department){
-                $departmentId = $UserInfo->department[0];
-                $departmentList = $api->DepartmentList($departmentId);
-                return $departmentList[0]->name;
-            }else{
-                return "";
-            }
+            dump($UserInfoByCode);
+            //            $UserInfo =  $api->UserGet($UserInfoByCode->UserId);
+//
+//            if ($UserInfo->department){
+//                $departmentId = $UserInfo->department[0];
+//                $departmentList = $api->DepartmentList($departmentId);
+//                return $departmentList[0]->name;
+//            }else{
+//                return "";
+//            }
         } catch (Exception $e) {
             echo $e->getMessage() . "\n";
         }
