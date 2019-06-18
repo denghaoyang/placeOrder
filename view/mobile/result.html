@@ -118,12 +118,12 @@
     $(function(){
         //解析get参数
         var code = getQueryString("code");
+        console.log(code);
         var userInfo = getUserInfoByCode(code);
         $("#proxyName").val(userInfo);
         $("#projectName").val(code);
 
         var windowArray = JSON.parse(sessionStorage.getItem("windowArray"));
-        console.log(windowArray);
 
         $.each(windowArray,function(i,v){
             $(".windowAppend").append('<span class="weui-form-preview__value" style="float: left">'+v.name+'( '+v.sizeAlias+((v.attrAlias)?(' '+v.attrAlias):')')+')</span>'+'<em class="weui-form-preview__value">*'+v.num+'</em>');
