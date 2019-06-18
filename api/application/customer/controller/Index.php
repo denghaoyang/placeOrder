@@ -52,20 +52,20 @@ class Index extends Controller{
     }
 
     public function getUserInfoByCode($code){
-        $api = new CorpAPI(config("CORP_ID"),config("CONTACT_SYNC_SECRET"));
+        $api = new CorpAPI(config("CORP_ID"),config("APP_SECRET"));
 
         try {
             $UserInfoByCode = $api->GetUserInfoByCode($code);
-            dump($UserInfoByCode);
-            //            $UserInfo =  $api->UserGet($UserInfoByCode->UserId);
-//
-//            if ($UserInfo->department){
-//                $departmentId = $UserInfo->department[0];
-//                $departmentList = $api->DepartmentList($departmentId);
-//                return $departmentList[0]->name;
-//            }else{
-//                return "";
-//            }
+
+            $UserInfo =  $api->UserGet($UserInfoByCode->UserId);
+
+            if ($UserInfo->department){
+                $departmentId = $UserInfo->department[0];
+                $departmentList = $api->DepartmentList($departmentId);
+                return $departmentList[0]->name;
+            }else{
+                return "";
+            }
         } catch (Exception $e) {
             echo $e->getMessage() . "\n";
         }
