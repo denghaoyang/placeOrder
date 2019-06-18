@@ -152,6 +152,6 @@ return [
 
     // 某个自建应用的id及secret, 在管理端 -> 企业应用 -> 自建应用, 点进相应应用可以看到
     "APP_ID"                => 1000007,
-    "APP_SECRET"            => "7y90vI9z8H-OF9qSh55LHS8-pZ3ZqQVoiUwGUmWBUWI"
+    "APP_SECRET"            => "PBORrv2e0IcS8QJkji68gTrCP16PoPXuEUs13I4oSyk"
 
 ];
