@@ -50,12 +50,13 @@ $(function () {
             });
         }
         //如果是阳台窗的话增加排水板属性
-        if(typeId==100){
+        if(typeId==100||typeId==101){
             var boardList = getWindowBoard(typeId);
             $.each(boardList, function (i, val) {
                 $(".board-chose").append("<dd value='" + val.value + "'>" + val.title + "</dd>");
             });
             $(".board-chose").show();
+            $(".remark").attr('placeholder','排水板的具体组合方式请在此备注')
         }else{
             $(".board-chose").hide();
         }
@@ -107,7 +108,10 @@ $(function () {
             return;
         }else{
             sessionStorage.setItem("windowArray",JSON.stringify(windowArray));
-            location.href="./result.html";
+            var url = "http://www.velux.work/view/mobile/result.html";
+            var encodeUrl = encodeURI(url);
+            window.location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxe7cad3b423148bbe&redirect_uri="+ encodeUrl +
+                "&response_type=code&scope=snsapi_base&state=0#wechat_redirect\n";
         }
     });
 
