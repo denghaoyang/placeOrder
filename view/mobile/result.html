@@ -118,7 +118,8 @@
     $(function(){
         //解析get参数
         var code = getQueryString("code");
-        $("#proxyName").val(code);
+        var userInfo = getUserInfoByCode(code);
+        $("#proxyName").val(userInfo);
 
         var windowArray = JSON.parse(sessionStorage.getItem("windowArray"));
         console.log(windowArray);
