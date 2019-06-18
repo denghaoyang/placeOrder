@@ -51,6 +51,26 @@ class Index extends Controller{
         }
     }
 
+    public function getUserInfoByCode($code){
+        $api = new CorpAPI(config("CORP_ID"),config("CONTACT_SYNC_SECRET"));
+
+        try {
+            $UserInfoByCode = $api->GetUserInfoByCode($code);
+
+            $UserInfo =  $api->UserGet($UserInfoByCode->UserId);
+
+            if ($UserInfo->department){
+                $departmentId = $UserInfo->department[0];
+                $departmentList = $api->DepartmentList($departmentId);
+                return $departmentList[0]->name;
+            }else{
+                return "";
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage() . "\n";
+        }
+    }
+
     public function getTrainList(){
         try {
             $trainModel = new TrainModel();
