@@ -30,6 +30,13 @@ function getWindowAttr(windowId){
     return result;
 }
 
+function getUserInfoByCode(code){
+    $.ajax({type:"get",url:path+"customer/index/getUserInfoByCode",data:{"code":code},async: false,success:function(d){
+            result = d;
+        }});
+    return result;
+}
+
 function getWindowBoard(windowId){
     $.ajax({type:"get",url:path+"api/order/getWindowBoard",data:{"windowId":windowId},async: false,success:function(d){
             result = d;
