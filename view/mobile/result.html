@@ -120,6 +120,7 @@
         var code = getQueryString("code");
         var userInfo = getUserInfoByCode(code);
         $("#proxyName").val(userInfo);
+        $("#projectName").val(code);
 
         var windowArray = JSON.parse(sessionStorage.getItem("windowArray"));
         console.log(windowArray);
