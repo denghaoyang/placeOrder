@@ -33,12 +33,6 @@
                     <input class="weui-input" placeholder="请输入您的服务商名称" id="proxyName" type="text">
                 </div>
             </div>
-            <div class="weui-cell" >
-            <div class="weui-cell__hd"><label class="weui-label" for="projectName" style="width: 90px;margin-right: 15px">项目名称</label></div>
-                <div class="weui-cell__bd">
-                    <input class="weui-input" placeholder="请输入您的项目名称" id="projectName" type="text">
-                </div>
-            </div>
             <div class="weui-cell">
             <div class="weui-cell__hd"><label class="weui-label" for="name" style="width: 90px;margin-right: 15px">收货人姓名</label></div>
                 <div class="weui-cell__bd">
@@ -84,7 +78,9 @@
         </div>
         <div class="weui-form-preview__bd">
             <div class="weui-form-preview__item windowAppend">
-                <label class="weui-form-preview__label">产品信息</label><br>
+                <label class="weui-form-preview__label">产品信息</label>
+                <label class="weui-form-preview__value">数量</label>
+                <br>
 
 
             </div>
@@ -114,12 +110,16 @@
         //解析get参数
         var code = getQueryString("code");
         var userInfo = getUserInfoByCode(code);
-        $("#proxyName").val(userInfo);
+        var path = window.location.href;
+        console.log(path);
+        // if (!path.indexOf("localhost")){
+        //     $("#proxyName").val(userInfo);
+        // }
 
         var windowArray = JSON.parse(sessionStorage.getItem("windowArray"));
 
         $.each(windowArray,function(i,v){
-            $(".windowAppend").append('<span class="weui-form-preview__value" style="float: left">'+v.name+'( '+v.sizeAlias+((v.attrAlias)?(' '+v.attrAlias):')')+')</span>'+'<em class="weui-form-preview__value">*'+v.num+'</em>');
+            $(".windowAppend").append('<span class="weui-form-preview__value" style="float: left">'+v.alias+'  '+v.sizeAlias+((v.attrAlias)?('   '+v.attrAlias):'')+"&nbsp&nbsp&nbsp&nbsp"+v.title+'</span>'+'<em class="weui-form-preview__value">'+v.num+'</em>');
         });
 
         function getQueryString(name) {

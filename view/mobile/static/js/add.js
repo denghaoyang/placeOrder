@@ -4,7 +4,7 @@ $(function () {
     var windowList = getWindowList();
     $.each(windowList,function (i,val) {
         var imgPath = (val.src)?val.src:'/img/pic.png';
-        var windowHtml = '<li><div class="menu-img"><img src="./static'+imgPath+'" width="55" height="55"></div><div class="menu-txt"><input type="hidden" value="'+val.id+'"/><h4 data-icon="00" value="'+val.value+'">'+val.title+'</h4>' +
+        var windowHtml = '<li><div class="menu-img"><img src="./static'+imgPath+'" width="55" height="55"></div><div class="menu-txt"><input type="hidden" class="windowTitle" value="'+val.windowTitle+'"/><input type="hidden" class="windowId" value="'+val.id+'"/><h4 data-icon="00" value="'+val.value+'">'+val.title+'</h4>' +
             '<div class="btn"><button class="minus"><strong></strong></button><i>0</i><button class="add"><strong></strong></button></div></div></li>';
         $(".window-con"+val.type+" ul").append(windowHtml);
     });
@@ -19,13 +19,15 @@ $(function () {
         $(".size-chose dd").remove();
         $(".attr-chose dd").remove();
         $(".board-chose dd").remove();
+        $(".remark").val("");
 
         var parent = $(this).parent();
         var name= parent.parent().children("h4").text();
-        var typeId = parent.parent().children("input[type='hidden']").val();
+        var typeId = parent.parent().children(".windowId").val();
         var src = $(this).parent().parent().prev().children()[0].src;
         var n = $(this).prev().text();
         var alias = parent.parent().children("h4").attr("value");
+        var title = parent.parent().children(".windowTitle").val();
 
         //添加尺寸与属性信息
         var windowSizeList = getWindowSize(typeId);
@@ -39,6 +41,7 @@ $(function () {
                 $(".size-chose").append("<dd value='"+val.value+"' class='m-active'>"+val.title+"</dd>");
             });
         }
+        $(".size-chose").append("<dd value='特尺'>特殊尺寸(请备注)</dd>");
         if(windowAttrList.length>1)
         {
             $.each(windowAttrList, function (i, val) {
@@ -49,6 +52,10 @@ $(function () {
                 $(".attr-chose").append("<dd value='"+val.value+"' class='m-active'>"+val.title+"</dd>");
             });
         }
+        //添加产品title与产品id
+        $(".title").val(title);
+        $(".id").val(typeId);
+
         //如果是阳台窗的话增加排水板属性
         if(typeId==100||typeId==101){
             var boardList = getWindowBoard(typeId);
@@ -95,7 +102,7 @@ $(function () {
         }
 
         //设置已选属性与尺寸
-        $(".choseValue").text($(".size-chose .m-active").text()+$(".attr-chose .m-active").text());
+        $(".choseValue").text($(".size-chose .m-active").text()+"   "+$(".attr-chose .m-active").text());
     });
 
     $(".minus").click(function (){
@@ -108,10 +115,17 @@ $(function () {
             return;
         }else{
             sessionStorage.setItem("windowArray",JSON.stringify(windowArray));
-            var url = "http://www.velux.work/view/mobile/result.html";
-            var encodeUrl = encodeURI(url);
-            window.location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxe7cad3b423148bbe&redirect_uri="+ encodeUrl +
-                "&response_type=code&scope=snsapi_base&state=0#wechat_redirect\n";
+            //获取当前地址 如果为localhost直接跳转
+            var path = window.location.href;
+
+            if (path.indexOf("localhost")){
+                window.location.href="http://localhost/order/view/mobile/result.html";
+            } else{
+                var url = "http://www.velux.work/view/mobile/result.html";
+                var encodeUrl = encodeURI(url);
+                window.location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxe7cad3b423148bbe&redirect_uri="+ encodeUrl +
+                    "&response_type=code&scope=snsapi_base&state=0#wechat_redirect\n";
+            }
         }
     });
 
@@ -139,6 +153,9 @@ $(function () {
         var attribute = $(".attr-chose .m-active").html();//属性
         var attrAlias = $(".attr-chose .m-active").attr("value");//属性简称
         var remark = $(".weui-textarea").text();
+        var title = $(".title").val();
+        var id = $(".id").val();
+
         //判断是否勾选尺寸与属性
         if(!$(".subChose dd").hasClass("m-active")){
             $.toptip('请选择尺寸','error');
@@ -171,21 +188,21 @@ $(function () {
             }
             //露台窗窗做特殊处理
             if (nameAlias == "GEL"){
-                windowArray.push({"name":name,"alias":nameAlias,"size":"M08","sizeAlias":"M08","num":n,"attribute":attribute,"attrAlias":attrAlias,"remark":remark});
-                windowArray.push({"name":size,"alias":sizeAias,"size":"M35","sizeAlias":"M35","num":n,"attribute":attribute,"attrAlias":attrAlias,"remark":remark});
+                windowArray.push({"name":name,"alias":nameAlias,"size":"M08","sizeAlias":"M08","num":n,"attribute":attribute,"attrAlias":attrAlias,"remark":remark,"title":"GEL","id":"101"});
+                windowArray.push({"name":size,"alias":sizeAias,"size":"M35","sizeAlias":"M35","num":n,"attribute":attribute,"attrAlias":attrAlias,"remark":remark,"title":"M35","id":"101"});
             }else{
-                windowArray.push({"name":name,"alias":nameAlias,"size":size,"sizeAlias":sizeAias,"num":n,"attribute":attribute,"attrAlias":attrAlias,"remark":remark});
+                windowArray.push({"name":name,"alias":nameAlias,"size":size,"sizeAlias":sizeAias,"num":n,"attribute":attribute,"attrAlias":attrAlias,"remark":remark,"title":title,"id":id});
             }
             //如果同一名称下的产品调转数组顺序
             windowArray.reverse();
         }else{
             //露台窗窗做特殊处理
             if (nameAlias == "GEL"){
-                windowArray.push({"name":name,"alias":nameAlias,"size":"M08","sizeAlias":"M08","num":n,"attribute":attribute,"attrAlias":attrAlias,"remark":remark});
-                windowArray.push({"name":size,"alias":sizeAias,"size":"M35","sizeAlias":"M35","num":n,"attribute":attribute,"attrAlias":attrAlias,"remark":remark});
+                windowArray.push({"name":name,"alias":nameAlias,"size":"M08","sizeAlias":"M08","num":n,"attribute":attribute,"attrAlias":attrAlias,"remark":remark,"title":"GEL","id":"101"});
+                windowArray.push({"name":size,"alias":sizeAias,"size":"M35","sizeAlias":"M35","num":n,"attribute":attribute,"attrAlias":attrAlias,"remark":remark,"title":"M35","id":"101"});
                 $("#totalcountshow").html(nm*1+2);
             }else{
-                windowArray.push({"name":name,"alias":nameAlias,"size":size,"sizeAlias":sizeAias,"num":n,"attribute":attribute,"attrAlias":attrAlias,"remark":remark});
+                windowArray.push({"name":name,"alias":nameAlias,"size":size,"sizeAlias":sizeAias,"num":n,"attribute":attribute,"attrAlias":attrAlias,"remark":remark,"title":title,"id":id});
                 $("#totalcountshow").html(nm*1+1);
             }
             windowArray.reverse();
@@ -224,7 +241,7 @@ $(function () {
             $(".up1").toggle();
             $(".shopcart-list.fold-transition").toggle();
             $.each(windowArray,function(k,i){
-                $(".list-content>ul").append( '<li class="food"><div><span class="nameAlias" >'+i.alias+'</span><span class="sizeAlias">'+i.sizeAlias+'</span><span class="attrAlias">'+i.attrAlias+'</span></div>' +
+                $(".list-content>ul").append( '<li class="food"><div><input type="hidden" class="id" value="'+i.id+'"><span class="nameAlias" >'+i.alias+'</span><span class="sizeAlias">'+i.sizeAlias+'</span><span class="attrAlias">'+i.attrAlias+'</span></div>' +
                     '<div class="btn weui-count"><a class="weui-count__btn weui-count__decrease decrease" style="margin-right: 10px"></a> <input class="number weui-count__number" type="number" value="'+i.num+'"> <a class="weui-count__btn weui-count__increase increase" style="margin-left: 10px"></a> </div>');
             });
             //重新绑定事件
@@ -232,9 +249,11 @@ $(function () {
 
             //加减按钮的事件绑定
             $('.decrease').on("click",function (e) {
+                console.log(e.currentTarget);
                 var $input = $(e.currentTarget).parent().find('.number');
                 var nameAlias = $(e.currentTarget).parent().parent().find('.nameAlias').text();
                 var sizeAlias = $(e.currentTarget).parent().parent().find('.sizeAlias').text();
+                var id = $(e.currentTarget).parent().parent().find('.id').val();
                 var number = parseInt($input.val() || "0") - 1;
 
                 if (number < MIN){
@@ -243,23 +262,25 @@ $(function () {
                 $input.val(number);
 
                 //修改缓存中的数据
-                freshWindowArray(nameAlias,sizeAlias,number);
+                freshWindowArray(nameAlias,sizeAlias,number,id);
             });
             $('.increase').on("click",function (e) {
                 var $input = $(e.currentTarget).parent().find('.number');
                 var nameAlias = $(e.currentTarget).parent().parent().find('.nameAlias').text();
                 var sizeAlias = $(e.currentTarget).parent().parent().find('.sizeAlias').text();
+                var id = $(e.currentTarget).parent().parent().find('.id').val();
                 var number = parseInt($input.val() || "0") + 1;
                 $input.val(number);
 
                 //修改缓存中的数据
-                freshWindowArray(nameAlias,sizeAlias,number);
+                freshWindowArray(nameAlias,sizeAlias,number,id);
             })
 
             var key;
-            function freshWindowArray(nameAlias,sizeAlias,value){
+            function freshWindowArray(nameAlias,sizeAlias,value,id){
+                console.log(id);
                 //修改列表面板的数值
-                $("h4[value='"+nameAlias+"']").next().find("i").text(value);
+                $(".windowId[value='"+id+"']").next().next().find("i").text(value);
                 if(windowArray.some(function (item,index) {
                     key=index;
                     return (item.alias == nameAlias)&&(item.sizeAlias==sizeAlias);
