@@ -101,7 +101,7 @@ class Index extends Controller{
 
         try {
             return $userModel->alias("u")
-                ->join("cu_department d","u.department_id=d.id")
+                ->join("cu_department d","u.department_id=d.department_id")
                 ->where("u.user_id",$userId)
                 ->field("u.*,d.name as department_name")
                 ->find();
