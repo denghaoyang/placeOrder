@@ -60,6 +60,13 @@ function addTrain(data){
     return result;
 }
 
+function updateTrain(data){
+    $.ajax({type:"post",url:path+"customer/index/updateTrain",data:data,async: false,success:function(d){
+            result = d;
+        }});
+    return result;
+}
+
 function getTrainInfo(trainId){
     $.ajax({type:"get",url:path+"customer/index/getTrain?trainId="+trainId,async: false,success:function(d){
             result = d;

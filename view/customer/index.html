@@ -79,7 +79,8 @@
 		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="edit">编辑</a>
 	</script>
 	<script type="text/html" id="barTrain">
-		<a class="layui-btn layui-btn-xs" lay-event="edit">查看</a>
+		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+		<a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="info">培训打分</a>
 	</script>
 </html>
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
@@ -255,6 +256,15 @@
 			var tr = obj.tr; //获得当前行 tr 的DOM对象
 			console.log(obj);
 			if(obj.event === 'edit'){
+				localStorage.setItem("trainId",data.id);
+				layer.open({
+					type: 2
+					,content: viewPath+'/view/customer/trainEdit.html'
+					,area: ['800px', '700px']
+					,maxmin: true
+				});
+			}
+			if(obj.event === 'info'){
 				localStorage.setItem("trainId",data.id);
 				layer.open({
 					type: 2

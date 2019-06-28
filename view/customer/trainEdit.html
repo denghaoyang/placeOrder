@@ -47,28 +47,30 @@
 
 <body>
 <form class="layui-form layui-form-pane1" action="" lay-filter="first">
+    <input type="hidden" name="id" id="trainId"/>
     <div class="layui-form-item">
         <label class="layui-form-label">培训名称</label>
         <div class="layui-input-inline">
-            <input type="text" name="name" autocomplete="off" class="layui-input" readonly>
+            <input type="text" name="name" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">主讲人</label>
         <div class="layui-input-inline">
-            <input type="text" name="lecturer" autocomplete="off" class="layui-input" readonly>
+            <input type="text" name="lecturer" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">培训地址</label>
         <div class="layui-input-inline">
-            <input type="text" name="location" autocomplete="off" class="layui-input" readonly>
+            <input type="text" name="location" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <div id="layui-xtree-demo1" style="width:600px;height:600px; border:1px solid black; margin:20px;overflow:auto;">
         </div>
     </div>
+    <button class="layui-btn submit" style="margin-left: 250px" type="button">提交</button>
 </form>
 
 </body>
@@ -85,6 +87,7 @@
     //获取train信息
     var trainId = localStorage.getItem("trainId");
     var trainInfo = getTrainInfo(trainId);
+    $("input[name='id']").val(trainInfo.id);
     $("input[name='name']").val(trainInfo.name);
     $("input[name='lecturer']").val(trainInfo.lecturer);
     $("input[name='location']").val(trainInfo.location);
@@ -98,13 +101,42 @@
             elem: 'layui-xtree-demo1' ,//放xtree的容器（必填）
             form: form ,//layui form对象 （必填）
             data: trainInfo.mail ,//数据，结构请参照下面 （必填）
-            isopen: false, //初次加载时全部展开，默认true （选填）
+            isopen: true, //初次加载时全部展开，默认true （选填）
             color: "#ffe698", //图标颜色 （选填）
             defaultlayer: 0, //默认不展开，如果超出最大层级则全展开
             icon: { //图标样式 （选填）
                 open: "", //节点打开的图标
                 close: "", //节点关闭的图标
             },
+        });
+
+        $(".submit").click(function(){
+            var id = $("input[name='id']").val();
+            var name = $("input[name='name']").val();
+            var lecturer = $("input[name='lecturer']").val();
+            var location = $("#location").val();
+
+            var oCks = xtree.GetChecked(); //获取全部选中的末级节点checkbox对象
+            var str = "";
+            for(var i = 0; i < oCks.length; i++) {
+                str += oCks[i].value+","
+            }
+            if (name==''){
+                alert("请填写培训名称");
+            }else if(lecturer == ''){
+                alert("请填写主讲人");
+            }else if(location == ''){
+                alert("请选择培训地点");
+            }else if(str == ''){
+                alert("请选择培训人员");
+            }else{
+                var status = updateTrain({"id":id,"name":name,"lecturer":lecturer,"location":location,"userIds":str});
+                if (status == true){
+                    parent.location.reload();
+                } else{
+                    alert("信息录入有误");
+                }
+            }
         });
     });
 
