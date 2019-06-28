@@ -147,6 +147,15 @@ class Index extends Controller{
         return $status;
     }
 
+    public function updateTrain(){
+        $data = input("post.");
+        $trainModel = new TrainModel();
+
+        $status = $trainModel->updateTrain($data);
+//        echo $trainModel->getLastSql();
+        return $status;
+    }
+
     public function getTrain($trainId){
         $trainModel = new TrainModel();
         $userTrainModel = new UserTrainModel();

@@ -36,6 +36,31 @@ class TrainModel extends Model
         }
     }
 
+    public function updateTrain($data){
+        $userTrainModel = new UserTrainModel();
+        // 启动事务
+        Db::startTrans();
+        try {
+            $data["userIds"] = substr($data["userIds"],0,-1);
+            $this->allowField(true)->isUpdate(true)->save($data);
+            $trainId = $this->id;
+            $userIds = explode(",",$data["userIds"]);
+            //清空trainId对应的所有userIds
+            $userTrainModel->where("train_id",$trainId)->delete();
+            foreach($userIds as $userId){
+                $userTrainModel->insert(["user_id"=>$userId,"train_id"=>$trainId]);
+            }
+            // 提交事务
+            Db::commit();
+            return true;
+        } catch (\Exception $e) {
+            // 回滚事务
+            Db::rollback();
+            echo $e->getMessage();
+//            return false;
+        }
+    }
+
     public function getTrain($trainId){
 
         $train = $this->find($trainId);
